@@ -1,0 +1,96 @@
+span.drop-cap { 
+	float: left; color: black; font-size: 7em; line-height: 0.9em; padding-bottom: 10px; padding-right: 0.1em; padding-left: 3px; font-family: 'Bitter'; 
+}
+
+body {
+	margin: 0 0;
+	padding: 0 0;
+	background-image: url(../img/background.png);
+	background-repeat: repeat;
+	height: 100%;
+}
+
+p {
+    font-family: 'Roboto', Arial, sans-serif;
+	line-height: 1.3em;
+    font-size: x-large;
+	font-weight: lighter;
+	text-align: justify;
+}
+
+img.drop-cap {
+	height: 5em;
+	padding-right: 1em;
+	padding-bottom: 0.5em;
+}
+
+#main-div {
+	background-color: #F7F7FF;
+	margin: 0 auto;
+	width: 60%;
+	padding: 0 10%;
+	min-height: 100%;
+}
+
+#dock ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+	text-align: center;
+}
+
+#dock li {
+    display: inline;
+}
+
+#dock li a {
+	font-family: 'Roboto', Arial, sans-serif;
+	font-weight: bold;
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#dock li a:hover {
+    background-color: #112;
+}
+
+#dock a, a:visited { 
+	outline: none 
+}
+#dock img {
+	border: none;
+}
+
+/* dock - top */
+.dock {
+	position: relative; 
+	height: 90px; 
+	text-align: center;
+}
+.dock-container {
+	position: absolute;
+	height: 90px;
+}
+a.dock-item {
+	display: block;
+	width: 80px;
+	color: #777;
+	position: absolute;
+	top: 0px;
+	text-align: center;
+	text-decoration: none;
+	font-family: 'Roboto', Arial, sans-serif;
+	font-weight: bold;
+}
+.dock-item img {
+	border: none;
+	width: 100%; 
+}
+.dock-item span {
+	display: none;
+	padding-top: 5px;
+}

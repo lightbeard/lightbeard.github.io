@@ -1,0 +1,209 @@
+/* web stylesheet */
+
+#main-div {
+	padding: 0 5%;
+}
+
+a {
+	color: #444;
+	text-decoration: none;
+}
+
+#actions {
+	text-align: right;
+	font-size: 0.9em;
+}
+
+.download, .print {
+	cursor: pointer;
+	padding: 0.3em;
+}
+
+#actions span:hover {
+	background-color: #CCC;
+}
+
+#actions span {
+	vertical-align: 35%;
+	color: #444;
+}
+
+#actions img {
+	width: 25px;
+}
+
+#resume {
+	font-family: Book Antiqua;
+	font-size: 120%;
+	text-align: justify;
+	padding: 0 0 3em 0;
+	margin: 0;
+}
+
+#resume ol {
+	list-style-type: none;
+    margin: 0;
+    padding: 0.2em 0;
+	display: table;
+	width: 100%;
+}
+
+#resume ol > li {
+	display: table-cell;
+}
+
+#resume ul {
+	list-style-type: square;
+	padding-left: 1.1em;
+}
+
+#resume ul > li {
+	list-style-position: outside;
+	padding: 0.2em 0;
+}
+
+#heading li:first-child {
+	text-align: left;
+	vertical-align: middle;
+	font-size: 0.8em;
+	width: 20%;
+}
+
+#heading li:nth-child(2) {
+	text-align: center;
+	font-size: 2.7em;
+	vertical-align: middle;
+	width: 60%;
+	padding-right: 0.2em;
+}
+
+#heading li:last-child {
+	text-align: right;
+	vertical-align: middle;
+	font-size: 0.8em;
+	width: 20%;
+}
+
+h1 {
+	font-size: 1.5em;
+	border-top:1px solid #444;
+    float:left;
+    width:100%;
+    padding-top:0.2em;
+}
+
+#summary {
+	padding-left: 2em;
+}
+
+ol#education > li:first-child {
+	padding-left: 2em;
+}
+
+ol#education > li:last-child {
+	text-align: right;
+}
+
+.experience ul {
+	padding-right: 6em !important;
+}
+
+.experience > li:first-child, #publications > li:first-child, #talks > li:first-child, #awards > li:first-child {
+	font-size: 0.9em;
+	width: 15%;
+	text-align: center;
+	padding-right: 1em;
+}
+
+#publications {
+	font-size: 0.98em;
+}
+
+#publications ul, #talks ul, #awards ul {
+	padding-right: 1em;
+}
+
+#publications > li:first-child img {
+	padding: 1em 0;
+}
+
+#publications > li:last-child, #talks > li:last-child, #awards > li:last-child {
+	vertical-align: top;
+}
+
+#talks > li:first-child img {
+	padding-top: 1em;
+}
+
+span.job-title {
+	font-weight: bold;
+}
+
+span.city {
+	float: right;
+}
+
+/* icon formating */
+
+.icon {
+	padding-top: 0.2em;
+	max-height: 70px;
+	max-width: 110px;
+}
+
+.adjust-icon {
+	padding-top: 0.2em;
+	max-height: 60px;
+	max-width: 90px;
+}
+
+/* stylesheet for printing and PDF */
+
+@media print {
+	
+	body * {
+		visibility: hidden;
+	}
+	#resume, #resume * {
+		visibility: visible;
+	}
+	#resume {
+		position: absolute;
+		left: 0;
+		top: 0;
+		font-size: 10pt;
+		line-height: 100%;
+		padding: 0.5in 0.5in 0 0.5in;
+		margin: 0 0 0 0;
+	}
+
+	#resume ul {
+		padding-right: 1.4em;
+		padding-left: 1.2em;
+	}
+	
+	#resume ul > li {
+		padding: 0.1em 0;	
+	}
+
+	h1 {
+		margin-top: 0.5em;
+		margin-bottom: 0.5em;
+	}
+	
+	#publications ul, #talks ul, #awards ul {
+		padding-right: 8%;
+	}
+  
+	.icon {
+		padding-top: 0.2em;
+		max-height: 50px;
+		max-width: 90px;
+	}
+
+	.adjust-icon {
+		padding-top: 0.2em;
+		max-height: 40px;
+		max-width: 70px;
+	}
+}
