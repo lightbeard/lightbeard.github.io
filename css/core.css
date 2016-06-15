@@ -1,8 +1,13 @@
 span.drop-cap { 
-	float: left; color: black; font-size: 7em; line-height: 0.9em; padding-bottom: 10px; padding-right: 0.1em; padding-left: 3px; font-family: 'Bitter'; 
+	float: left; 
+	color: black; font-size: 7em; 
+	line-height: 0.9em; 
+	padding: 0 0.2em 0 3px; 
+	font-family: 'Bitter', Arial, sans-serif; 
 }
 
 body {
+	font-family: 'Roboto', Arial, sans;
 	margin: 0 0;
 	padding: 0 0;
 	background-image: url(../img/background.png);
@@ -11,7 +16,6 @@ body {
 }
 
 p {
-    font-family: 'Roboto', Arial, sans-serif;
 	line-height: 1.3em;
     font-size: x-large;
 	font-weight: lighter;
@@ -30,6 +34,20 @@ img.drop-cap {
 	width: 60%;
 	padding: 0 10%;
 	min-height: 100%;
+}
+
+#backup-menu li {
+	display: table-cell;
+	text-align: center;
+}
+
+#backup-menu a, #backup-menu a:hover, #backup-menu a:visited, #backup-menu a:link, #backup-menu a:active {
+	color: black;
+	text-decoration: none;
+}
+
+#backup-menu img {
+	height: 90px;
 }
 
 #dock ol {
@@ -65,7 +83,6 @@ img.drop-cap {
 	border: none;
 }
 
-/* dock - top */
 .dock {
 	position: relative; 
 	height: 90px; 
@@ -93,4 +110,19 @@ a.dock-item {
 .dock-item span {
 	display: none;
 	padding-top: 5px;
+}
+
+#carousel {
+	max-height: 60%;
+}
+
+#carousel li button:before {
+	font-size: 10px;
+}
+
+#carousel img {
+	margin: auto;
+	max-height: 60%;
+	max-width: 70%;
+	border: 1px #444 solid;
 }
