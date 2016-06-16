@@ -29,6 +29,7 @@ window.addEventListener('WebComponentsReady', function(e) {
 
 	$('.carousel').slick({
 		dots: true,
+		arrows: false,
 		autoplay: true,
 		autoplaySpeed: 5000,
 		pauseOnDotsHover: true,
@@ -44,5 +45,8 @@ window.addEventListener('WebComponentsReady', function(e) {
 		$('.carousel').slick('slickPause');
 		$('.carousel').slick('setOption', 'autoplay', false, false);
 	});
+	
+	if(window.RESUME) $('#footer').css('display','none');
+	else $('#footer-carousel').slick();
 	
 });

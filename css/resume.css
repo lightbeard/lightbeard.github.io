@@ -1,5 +1,9 @@
 /* web stylesheet */
 
+body {
+	font-size: 1vw !important;
+}
+
 #main-div {
 	padding: 0 5%;
 }
@@ -160,6 +164,10 @@ span.city {
 /* stylesheet for printing and PDF */
 
 @media print {
+	
+	body {
+		background: none;
+	}
 	
 	body * {
 		visibility: hidden;

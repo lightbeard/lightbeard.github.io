@@ -7,6 +7,7 @@ span.drop-cap {
 }
 
 body {
+	font-size: 1.5vw;
 	font-family: 'Roboto', Arial, sans;
 	margin: 0 0;
 	padding: 0 0;
@@ -17,7 +18,7 @@ body {
 
 p {
 	line-height: 1.3em;
-    font-size: x-large;
+    font-size: 1.2em;
 	font-weight: lighter;
 	text-align: justify;
 }
@@ -112,17 +113,62 @@ a.dock-item {
 	padding-top: 5px;
 }
 
-#carousel {
+#pictures {
 	max-height: 60%;
 }
 
-#carousel li button:before {
+#picture li button:before {
 	font-size: 10px;
 }
 
-#carousel img {
+#picture img {
 	margin: auto;
 	max-height: 60%;
 	max-width: 70%;
 	border: 1px #444 solid;
+}
+
+.carousel {
+	margin: auto;
+	width: 30vw;
+}
+
+.carousel img {
+	margin: auto;
+	max-height: 600px;
+	height: 20vw;
+}
+
+#footer {
+    margin: auto;
+    padding: 20px;
+    width: 18vw;
+	text-align: center;
+	font-size: 1vw;
+}
+
+#footer span {
+	display: inline-block;
+	text-align: center;
+	padding-bottom: 2px;
+}
+
+#footer-carousel {
+	border-bottom: 1px black solid;
+	border-top: 1px black solid;
+}
+
+#footer img {
+	margin: auto;
+	height: 4vw;
+}
+
+#footer img[src*="jquery"] {
+	height: 40px;
+	padding-top: 5px;
+}
+
+#footer img[src*="gfont"] {
+	height: 40px;
+	padding-top: 5px;
 }

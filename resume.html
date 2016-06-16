@@ -1,42 +1,16 @@
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="css/core.css">
-	<link rel="stylesheet" type="text/css" href="css/resume.css">
-	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+	<meta charset="utf-8">
+	<script src="js/webcomponents.min.js"></script>
+	<link rel="import" href="imports.html">
+	<link rel="stylesheet" type="text/css" href="css/resume.css"/>
+	<link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
 	
-	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-	<script src="js/interface.js"></script>
-	<script src="js/jquery.hypher.js"></script>
-    <script src="js/en-us.js"></script>
-	
+	<script>window.RESUME = true;</script>
 </head>
 <body>
 
 <div id="main-div">
-
-	<br><br><br>
-
-	<ol id="backup-menu">
-		<li><a href="index.html">HOME</a></li>
-		<li><a href="resume.html">RESUME</a></li>
-		<li><a href="projects.html">PROJECTS</a></li>
-		<li><a href="publications.html">PUBLICATIONS</a></li>
-		<li><a href="interests.html">INTERESTS</a></li>
-		<li><a href="about.html">ABOUT</a></li>
-	</ol>
-
-	<div class="dock" id="dock" style="display:none;">
-	  <div class="dock-container">
-		  <a class="dock-item" href="index.html"><img src="img/home.png" alt="HOME" /><span>HOME</span></a>
-		  <a class="dock-item" href="resume.html"><img src="img/resume.png" alt="RESUME" /><span>RESUME</span></a>
-		  <a class="dock-item" href="projects.html"><img src="img/projects.png" alt="PROJECTS" /><span>PROJECTS</span></a>
-		  <a class="dock-item" href="publications.html"><img src="img/pub.png" alt="PUBLICATIONS" /><span>PUBLICATIONS</span></a>
-		  <a class="dock-item" href="interests.html"><img src="img/interests.png" alt="INTERESTS" /><span>INTERESTS</span></a>
-		  <a class="dock-item" href="about.html"><img src="img/about.png" alt="ABOUT" /><span>ABOUT</span></a>
-	  </div> 
-	</div>
-
-	<br><br>
 	
 	<p id="actions"><a href="2016-Robert-Peterson-Resume.pdf"><img class="download" src="img/download.png"><span class="download">DOWNLOAD</span></a><img class="print" src="img/print.png"><span class="print">PRINT</span></p>
 	
@@ -168,9 +142,7 @@
 	</div>
 </div>
 
-<script type="text/javascript" src="js/core.js"></script>
 <script>
-	$('#summary, .experience li').hyphenate('en-us');
 	$('.print').click(function(){
 		window.print();
 	});
