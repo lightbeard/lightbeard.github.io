@@ -38,7 +38,7 @@ a {
 	width: 25px;
 }
 
-#resume {
+#resume, #resume h1 {
 	font-family: Book Antiqua;
 	font-size: 120%;
 	text-align: justify;
@@ -48,8 +48,8 @@ a {
 
 #resume ol {
 	list-style-type: none;
-    margin: 0;
-    padding: 0.2em 0;
+    	margin: 0;
+    	padding: 0.2em 0;
 	display: table;
 	width: 100%;
 }
