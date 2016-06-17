@@ -38,7 +38,7 @@ a {
 	width: 25px;
 }
 
-#resume, #resume h1 {
+#resume {
 	font-family: Book Antiqua;
 	font-size: 120%;
 	text-align: justify;
@@ -90,12 +90,13 @@ a {
 	width: 20%;
 }
 
-h1 {
+#resume h1 {
+	font-family: Book Antiqua;
 	font-size: 1.5em;
 	border-top:1px solid #444;
-    float:left;
-    width:100%;
-    padding-top:0.2em;
+    	float:left;
+    	width:100%;
+    	padding-top:0.2em;
 }
 
 #summary {
