@@ -97,6 +97,7 @@ a {
     	float:left;
     	width:100%;
     	padding-top:0.2em;
+    	padding-bottom: 0;
 }
 
 #summary {
