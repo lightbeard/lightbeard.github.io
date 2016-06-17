@@ -1,3 +1,5 @@
+@charset 'UTF-8';
+
 @font-face {
     font-family: lotr;
     src: url(hobbitonbrushhand.ttf);
@@ -18,6 +20,7 @@ span.drop-cap {
 }
 
 body {
+	display: none;
 	font-size: 1.5vw;
 	font-family: 'Roboto', Arial, sans;
 	margin: 0 0;

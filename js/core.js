@@ -1,5 +1,8 @@
 
 window.addEventListener('WebComponentsReady', function(e) {
+	
+	$('body').css('display','block');
+	
 	// imports are loaded
 	var importLink = $('link[href="imports.html"]');
 	var menuHtml = $('#dock-menu', importLink[0].import);
