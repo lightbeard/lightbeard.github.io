@@ -11,6 +11,10 @@ h1 {
 	font-size: 4.5vw;
 }
 
+h1, h2 {
+	font-family: 'Bitter';
+}
+
 span.drop-cap { 
 	float: left; 
 	color: black; font-size: 7em; 
