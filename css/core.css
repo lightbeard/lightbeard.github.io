@@ -1,3 +1,8 @@
+@font-face {
+    font-family: lotr;
+    src: url(hobbitonbrushhand.ttf);
+}
+
 span.drop-cap { 
 	float: left; 
 	color: black; font-size: 7em; 
@@ -23,10 +28,25 @@ p {
 	text-align: justify;
 }
 
+a:link, a:visited, a:hover, a:active {
+	color: #db9d7a;
+}
+
 img.drop-cap {
 	height: 5em;
 	padding-right: 1em;
 	padding-bottom: 0.5em;
+}
+
+img.icon {
+	max-height: 4em;
+	max-width: 7em;
+	float: left;
+	padding: 0 0.7em 0 0.5em;
+}
+
+img.icon[src*="meditation"] {
+	max-height: 6em;
 }
 
 #main-div {
@@ -130,13 +150,14 @@ a.dock-item {
 
 .carousel {
 	margin: auto;
-	width: 30vw;
+	width: 45vw;
 }
 
 .carousel img {
 	margin: auto;
 	max-height: 600px;
-	height: 20vw;
+	height: 25vw;
+	border: solid #333 1px;
 }
 
 #footer {
@@ -165,10 +186,10 @@ a.dock-item {
 
 #footer img[src*="jquery"] {
 	height: 40px;
-	padding-top: 5px;
+	padding-top: 12px;
 }
 
 #footer img[src*="gfont"] {
 	height: 40px;
-	padding-top: 5px;
+	padding-top: 12px;
 }
