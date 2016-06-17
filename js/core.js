@@ -22,7 +22,7 @@ window.addEventListener('WebComponentsReady', function(e) {
 			}
 		);
 	} else {
-		// possible screen to small for menu
+		// TODO: possible screen too small for menu
 	}
 	
 	$('p').hyphenate('en-us');

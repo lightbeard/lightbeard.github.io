@@ -3,6 +3,12 @@
     src: url(hobbitonbrushhand.ttf);
 }
 
+h1 {
+	text-align: center;
+	font-family: 'Bitter';
+	font-size: 4.5vw;
+}
+
 span.drop-cap { 
 	float: left; 
 	color: black; font-size: 7em; 
@@ -29,7 +35,7 @@ p {
 }
 
 a:link, a:visited, a:hover, a:active {
-	color: #db9d7a;
+	color: #88614c;
 }
 
 img.drop-cap {
