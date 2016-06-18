@@ -93,6 +93,7 @@ a {
 #resume h1 {
 	font-family: Book Antiqua;
 	font-size: 1.5em;
+	font-weight: bold;
 	border-top:1px solid #444;
     	text-align: left;
     	width:100%;
