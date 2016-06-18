@@ -19,7 +19,7 @@ span.drop-cap {
 	float: left; 
 	color: black; font-size: 7em; 
 	line-height: 0.9em; 
-	padding: 0 0.2em 0 3px; 
+	margin: 0 0.2em 0 3px; 
 	font-family: 'Bitter', Arial, sans-serif; 
 }
 
@@ -207,5 +207,6 @@ a.dock-item {
 }
 
 img.headshot {
-	height: 100px;
+	height: 90px;
+	border: solid 1px black;
 }
