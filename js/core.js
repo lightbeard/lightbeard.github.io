@@ -28,7 +28,7 @@ window.addEventListener('WebComponentsReady', function(e) {
 		// TODO: possible screen too small for menu
 	}
 	
-	//$('p').hyphenate('en-us');
+	$('p').hyphenate('en-us');
 
 	$('.carousel').slick({
 		dots: true,
