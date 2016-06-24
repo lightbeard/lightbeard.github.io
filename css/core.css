@@ -40,9 +40,19 @@ p {
 	text-align: justify;
 }
 
-a:link, a:visited, a:hover, a:active {
+a:link, a:visited {
 	color: #88614c;
+	text-decoration: none;
 }
+
+a:hover, a:active {
+	color: #88614c;
+	text-decoration: underline;
+	text-decoration-color: #A8917c;
+	-moz-text-decoration-color: #A8917c;
+	-webkit-text-decoration-color: #A8917c;
+}
+
 
 img.drop-cap {
 	height: 5em;
