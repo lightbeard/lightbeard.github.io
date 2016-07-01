@@ -80,8 +80,10 @@ img.icon[src*="meditation"] {
 }
 
 #backup-menu {
-	margin: 0;
+	margin: 0 auto;
 	padding: 0;
+	display: inline-block;
+	list-style-type: none;
 }
 
 #backup-menu li {
