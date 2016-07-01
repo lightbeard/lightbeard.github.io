@@ -90,7 +90,8 @@ img.icon[src*="meditation"] {
 }
 
 #backup-menu img {
-	height: 90px;
+	max-height: 90px;
+	width: 10%;
 }
 
 #dock ol {
