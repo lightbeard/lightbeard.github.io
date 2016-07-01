@@ -81,7 +81,7 @@ img.icon[src*="meditation"] {
 
 #backup-menu {
 	display: inline-block;
-	margin: auto;
+	margin: 0 auto;
 }
 
 #backup-menu li {
