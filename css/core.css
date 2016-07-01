@@ -79,6 +79,11 @@ img.icon[src*="meditation"] {
 	min-height: 100%;
 }
 
+#backup-menu {
+	display: inline-block;
+	margin: auto;
+}
+
 #backup-menu li {
 	display: table-cell;
 	text-align: center;
