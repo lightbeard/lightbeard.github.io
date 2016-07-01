@@ -82,6 +82,7 @@ img.icon[src*="meditation"] {
 #backup-menu li {
 	display: table-cell;
 	text-align: center;
+	padding: 0 0.2em;
 }
 
 #backup-menu a, #backup-menu a:hover, #backup-menu a:visited, #backup-menu a:link, #backup-menu a:active {
