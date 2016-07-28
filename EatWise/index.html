@@ -301,23 +301,21 @@ If you would like to: access, correct, amend or delete any personal information 
 	></script>
 	<script>
 	<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '623765971116776',
-      xfbml      : true,
-      version    : 'v2.7'
-    });
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
-	
+		  window.fbAsyncInit = function() {
+		    FB.init({
+		      appId      : '623765971116776',
+		      xfbml      : true,
+		      version    : 'v2.7'
+		    });
+		  };
+		
+		  (function(d, s, id){
+		     var js, fjs = d.getElementsByTagName(s)[0];
+		     if (d.getElementById(id)) {return;}
+		     js = d.createElement(s); js.id = id;
+		     js.src = "//connect.facebook.net/en_US/sdk.js";
+		     fjs.parentNode.insertBefore(js, fjs);
+		   }(document, 'script', 'facebook-jssdk'));
 	</script>
 	<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
   </body>
