@@ -15,6 +15,7 @@ body {
 span#logo1, span#logo2 {
 	font-size: 6vw;
     font-family: 'Pacifico', cursive;
+    text-shadow: 1px 0 0 #111, -1px 0 0 #111, 0 1px 0 #111, 0 -1px 0 #111, 1px 1px #111, -1px -1px 0 #111, 1px -1px 0 #111, -1px 1px 0 #111;
 }
 
 span#logo1 {
@@ -25,7 +26,6 @@ span#logo1 {
 span#logo2 {
     font-weight: 500;
     color: #279e49;
-    text-shadow: 1px 0 0 #111, -1px 0 0 #111, 0 1px 0 #111, 0 -1px 0 #111, 1px 1px #111, -1px -1px 0 #111, 1px -1px 0 #111, -1px 1px 0 #111;
 }
 
 div#topview {
