@@ -1,12 +1,5 @@
 
 @font-face {
-  font-family: 'Pacifico';
-  src: url('pacifico.eot'); /* IE9 Compat Modes */
-  src: url('pacifico.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('pacifico.ttf')  format('truetype');
-}
-
-@font-face {
   font-family: 'Slim';
   src: url('wf_segoe-ui_light.eot'); /* IE9 Compat Modes */
   src: url('wf_segoe-ui_light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
