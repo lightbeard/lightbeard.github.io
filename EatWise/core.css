@@ -1,13 +1,6 @@
 
-@font-face {
-  font-family: 'Slim';
-  src: url('wf_segoe-ui_light.eot'); /* IE9 Compat Modes */
-  src: url('wf_segoe-ui_light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('wf_segoe-ui_light.ttf')  format('truetype');
-}
-
 body {
-	font-family: 'Slim', sans-serif;
+	font-family: 'Catamaran', sans-serif;
 	font-weight: 300;
 	line-height: 1.4;
 	font-size: 1.7vw;
@@ -15,7 +8,7 @@ body {
 
 span#logo1, span#logo2 {
 	font-size: 6vw;
-    font-family: 'Pacifico';
+    font-family: 'Pacifico', cursive;
 }
 
 span#logo1 {
