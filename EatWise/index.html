@@ -36,11 +36,16 @@
 				event.preventDefault();
 			
 				var suffix = url.split('#')[1];
-				if(suffix) $('#'+suffix).removeClass('hidden');
 				
-				$('html, body').animate({
-					scrollTop: $(url).offset().top
-				}, 500);
+				if(suffix === 'subscribe') {
+					$('#subscribeModal').modal();
+				} else {
+					if(suffix) $('#'+suffix).removeClass('hidden');
+					
+					$('html, body').animate({
+						scrollTop: $(url).offset().top
+					}, 500);	
+				}
 			}
 		});
 	</script>
