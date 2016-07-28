@@ -39,6 +39,12 @@
 				
 				if(suffix === 'subscribe') {
 					$('#subscribeModal').modal();
+				} else if(suffix === 'facebook')
+					FB.ui({
+					    method: 'share',
+					    display: 'popup',
+					    href: 'http://eatwiseapp.com',
+					  }, function(response){});
 				} else {
 					if(suffix) $('#'+suffix).removeClass('hidden');
 					
@@ -83,7 +89,7 @@
 				</div>
 				<div id="micons">
 					<span><a style="cursor:pointer" data-pin-custom="true" href="https://www.pinterest.com/pin/create/button/"><i class="fa fa-pinterest" aria-hidden="true"></i>&nbsp;Save</a></span>
-					<span><a class="left-pad fb-xfbml-parse-ignore" data-mobile-iframe="true" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Featwiseapp.com%2F&amp;src=sdkpreparse"><i class="fa fa-facebook-official" aria-hidden="true"></i>&nbsp;Share</a></span>
+					<span><a class="left-pad" href="#facebook"><i class="fa fa-facebook-official" aria-hidden="true"></i>&nbsp;Share</a></span>
 					<span><a href="#" class="left-pad"><i class="fa fa-twitter" aria-hidden="true"></i>&nbsp;Follow</a></span>
 				</div>
 			</div>
@@ -138,7 +144,7 @@
 	<div id="when" class="wide-entry">
 		<h2>Coming soon &mdash; stay informed</h2>
 		<p>EatWise is scheduled for release on Apple and Android platforms in winter 2016. Stay informed via social media or <a class="link" href="#subscribe">subscribe</a> to our newsletter for a chance to participate in the beta.</p>
-		<p id="licons"><a style="cursor:pointer" data-pin-custom="true" href="https://www.pinterest.com/pin/create/button/"><i class="fa fa-pinterest pinterest-red" aria-hidden="true"></i></a><a href="#"><i class="fa fa-facebook-official fb-blue" aria-hidden="true"></i></a><a href="#"><i class="fa fa-twitter twitter-blue" aria-hidden="true"></i></a>
+		<p id="licons"><a style="cursor:pointer" data-pin-custom="true" href="https://www.pinterest.com/pin/create/button/"><i class="fa fa-pinterest pinterest-red" aria-hidden="true"></i></a><a href="#facebook"><i class="fa fa-facebook-official fb-blue" aria-hidden="true"></i></a><a href="#"><i class="fa fa-twitter twitter-blue" aria-hidden="true"></i></a>
 		</p>
 	</div>
 	<!-- Subscribe Modal -->
