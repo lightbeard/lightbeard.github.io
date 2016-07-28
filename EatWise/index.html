@@ -58,6 +58,14 @@
     <![endif]-->
   </head>
   <body>
+ <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
     <div id="topview">
 		<div id="menu">
 			<span><a href="#intro">INTRODUCTION</a></span>
@@ -75,7 +83,7 @@
 				</div>
 				<div id="micons">
 					<span><a style="cursor:pointer" data-pin-custom="true" href="https://www.pinterest.com/pin/create/button/"><i class="fa fa-pinterest" aria-hidden="true"></i>&nbsp;Save</a></span>
-					<span><a href="#" class="left-pad"><i class="fa fa-facebook-official" aria-hidden="true"></i>&nbsp;Share</a></span>
+					<span><a class="left-pad fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Featwiseapp.com%2F&amp;src=sdkpreparse"><i class="fa fa-facebook-official" aria-hidden="true"></i>&nbsp;Share</a></span>
 					<span><a href="#" class="left-pad"><i class="fa fa-twitter" aria-hidden="true"></i>&nbsp;Follow</a></span>
 				</div>
 			</div>
