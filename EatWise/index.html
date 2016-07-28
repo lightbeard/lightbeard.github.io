@@ -69,7 +69,7 @@
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7&appid=623765971116776";
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
     <div id="topview">
@@ -203,7 +203,14 @@
 	    type="text/javascript"
 	    async defer
 	    src="//assets.pinterest.com/js/pinit.js"
-	></script>
+	>
+		FB.init({
+		    appId      : '623765971116776',
+		    status     : true,
+		    xfbml      : true,
+		    version    : 'v2.4' // or v2.0, v2.1, v2.2, v2.3
+		  });
+	</script>
 	
   </body>
 </html>
