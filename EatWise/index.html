@@ -90,7 +90,7 @@
 				<div id="micons">
 					<span><a style="cursor:pointer" data-pin-custom="true" href="https://www.pinterest.com/pin/create/button/"><i class="fa fa-pinterest" aria-hidden="true"></i>&nbsp;Pin</a></span>
 					<span><a class="left-pad" href="#facebook"><i class="fa fa-facebook-official" aria-hidden="true"></i>&nbsp;Share</a></span>
-					<span><a href="#" class="left-pad"><i class="fa fa-twitter" aria-hidden="true"></i>&nbsp;Follow</a></span>
+					<span></script><a class="left-pad" href="https://twitter.com/intent/follow?screen_name=@eatwiseapp"><i class="fa fa-twitter" aria-hidden="true"></i>&nbsp;Follow</a></span>
 				</div>
 			</div>
 		</div>
@@ -144,7 +144,7 @@
 	<div id="when" class="wide-entry">
 		<h2>Coming soon &mdash; stay informed</h2>
 		<p>EatWise is scheduled for release on Apple and Android platforms in winter 2016. Stay informed via social media or <a class="link" href="#subscribe">subscribe</a> to our newsletter for updates and a chance to participate in the beta.</p>
-		<p id="licons"><a style="cursor:pointer" data-pin-custom="true" href="https://www.pinterest.com/pin/create/button/"><i class="fa fa-pinterest pinterest-red" aria-hidden="true"></i></a><a href="#facebook"><i class="fa fa-facebook-official fb-blue" aria-hidden="true"></i></a><a href="#"><i class="fa fa-twitter twitter-blue" aria-hidden="true"></i></a>
+		<p id="licons"><a style="cursor:pointer" data-pin-custom="true" href="https://www.pinterest.com/pin/create/button/"><i class="fa fa-pinterest pinterest-red" aria-hidden="true"></i></a><a href="#facebook"><i class="fa fa-facebook-official fb-blue" aria-hidden="true"></i></a><a href="https://twitter.com/intent/follow?screen_name=@eatwiseapp"><i class="fa fa-twitter twitter-blue" aria-hidden="true"></i></a>
 		</p>
 	</div>
 	<!-- Subscribe Modal -->
@@ -298,14 +298,14 @@ If you would like to: access, correct, amend or delete any personal information 
 	    type="text/javascript"
 	    async defer
 	    src="//assets.pinterest.com/js/pinit.js"
-	>
-		FB.init({
+	></script>
+	<script>	FB.init({
 		    appId      : '623765971116776',
 		    status     : true,
 		    xfbml      : true,
 		    version    : 'v2.4' // or v2.0, v2.1, v2.2, v2.3
 		  });
 	</script>
-	
+	<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
   </body>
 </html>
