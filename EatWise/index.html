@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	
+	<link rel="stylesheet" href="core.css">
+	
+	
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+	<link rel="manifest" href="/manifest.json">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="theme-color" content="#ffffff">
+	
+    <title>EatWise</title>
+	
+	<script>
+		$(document).on('click', 'a', function(event){
+			
+			var url = $.attr(this, 'href');
+			
+			if(url.indexOf('#') >= 0) {
+				event.preventDefault();
+			
+				var suffix = url.split('#')[1];
+				if(suffix) $('#'+suffix).removeClass('hidden');
+				
+				$('html, body').animate({
+					scrollTop: $(url).offset().top
+				}, 500);
+			}
+		});
+	</script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div id="topview">
+		<div id="menu">
+			<span><a href="#intro">INTRODUCTION</a></span>
+			<span><a href="#features" class="left-pad">FEATURES</a></span>
+			<span><a href="#when" class="left-pad">WHEN</a></span>
+		</div>
+		<div id="left-container" class="vcenter">
+			<div>
+				<div id="slogan">
+					<h1>Live beyond<br>eating healthy</h1>
+					<div>
+						<span id="logo1">Eat</span><span id="logo2">Wise</span><br>
+						Medicinal Food Reference
+					</div>
+				</div>
+				<div id="micons">
+					<span><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i>&nbsp;Save</a></span>
+					<span><a href="#" class="left-pad"><i class="fa fa-facebook-official" aria-hidden="true"></i>&nbsp;Like</a></span>
+					<span><a href="#" class="left-pad"><i class="fa fa-twitter" aria-hidden="true"></i>&nbsp;Follow</a></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="intro" class="columns">
+		<div class="no-padding">
+			<img class="deuc" src="img/home-mockup.png"><img class="deuc" src="img/menu-mockup.png">
+		</div>
+		<div>
+			<h2>Explore the medicinal value of food and culinary herbs</h2>
+			<p>Did you know Rosemary is a preventative for memory loss?<sup><a href="https://lccn.loc.gov/99050051">[1]</a><a href="https://lccn.loc.gov/98048065">[2]</a></sup> How about that rye is known to relieve migraine headaches?<sup><a href="https://lccn.loc.gov/2009052292">[3]</a><a href="https://lccn.loc.gov/98015715">[4]</a></sup></p>
+			<p>EatWise is a reference app for finding medicinal foods associated with health interests, conditions, and symptoms that is reference-based and easy to use. Use it to make informed decisions while grocery shopping, choosing recipes, and more. Rosemary chicken rye bread sandwich anyone?</p>
+		</div>
+	</div>
+	<hr>
+	
+	<div id="features" class="columns">
+		<div>
+			<img class="mock" src="img/facts-mockup.png">
+		</div>
+		<div>
+			<h2>Heavy on facts and details</h2>
+			<p>Designed for the health-conscious user, EatWise provides as much relevant information as possible including condition symptoms, calories, food nutrient content, and more. And if that isn't enough, we often link to further reading &mdash; just for you &mdash; because we know you are the food nerd that stares at a phone in the grocery aisle.</p>
+		</div>
+	</div>
+	<hr>
+	
+	<div class="columns">
+		<div>
+			<img class="mock" src="img/filter-ref-mockup.png">
+		</div>
+		<div>
+			<h2>Filter out the fluff with reference controls</h2>
+			<p>We provide complete transparency to health condition and medicinal food information references. But what if you don't like a particular reference? No problem, EatWise allows for filtering of references so only the information you trust is shown.</p>
+		</div>
+	</div>
+	<hr>
+	
+	<div class="columns">
+		<div>
+			<img class="mock" src="img/ref-mockup.png">
+		</div>
+		<div>
+			<h2>Empowerment through user-feedback</h2>
+			<p>As big as our egos are, even we must admit EatWise is not perfect. EatWise is designed to continually improve and expand its reference database with your valuable feedback.</p><p>Study of the medicinal benefits of foods and herbs is an active area of research<sup><a href="http://www.liebertpub.com/overview/journal-of-medicinal-food/38/">[5]</a></sup>. With new information available almost on a daily basis, EatWise is designed to stay current.</p>
+		</div>
+	</div>
+	<hr>
+	
+	<div id="when" class="wide-entry">
+		<h2>Coming soon &mdash; stay informed</h2>
+		<p>EatWise is scheduled for release on Apple and Android platforms in winter 2016. Stay informed via social media or <a class="link" href="#">subscribe</a> to our newsletter for a chance to participate in the beta.</p>
+		<p id="licons"><a href="#"><i class="fa fa-pinterest pinterest-red" aria-hidden="true"></i></a><a href="#"><i class="fa fa-facebook-official fb-blue" aria-hidden="true"></i></a><a href="#"><i class="fa fa-twitter twitter-blue" aria-hidden="true"></i></a>
+		</p>
+	</div>
+	<hr>
+	
+	<div id="credits" class="wide-entry hidden">
+		<h2>Where credit is due</h2>
+		<p>Development &mdash; Robert Ross Peterson</p>
+		<p>Testing & Marketing &mdash; Jessie Anna Childs</p>
+	</div>
+	
+	<div id="privacy" class="wide-entry hidden">
+		<h2>Privacy Statement</h2>
+		<p>your privacy is important ~la</p>
+	</div>
+	
+	<div id="disclaimer" class="wide-entry hidden">
+		<h2>Disclaimer</h2>
+		<p>The information disclosed on this website, disclosed from the EatWise mobile application, and disclosed from any other associated channels is not intended to diagnose or treat medical conditions. All disclosed information is provided AS-IS and for informational purposes only. The disclosed information is not a replacement for medical care from a healthcare professional. Please consult a healthcare professional before taking any action upon reading any and all disclosed information.</p>
+	</div>
+	
+	<div id="footer">
+		<br>
+			<span>(c) EatWise 2016</span>
+			<a href="#disclaimer">Disclaimer</a>
+			<a href="#privacy">Privacy</a>
+			<a href="#credits">Credits</a>
+			<a href="#">Twitter</a>
+			<a href="#">Facebook</a>
+			<a href="#">Contact</a>
+		<br><br>
+	</div>
+	
+  </body>
+</html>
