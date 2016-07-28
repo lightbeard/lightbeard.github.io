@@ -45,7 +45,8 @@ div#menu {
 	height: 10%;
 	text-align: right;
 	padding: 1.5%;
-	font-size: 1.6vw;
+	font-size: 1.5vw;
+	font-weight: bold;
 }
 
 #credits p {
