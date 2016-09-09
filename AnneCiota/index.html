@@ -50,52 +50,38 @@
       <a href="#"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></a>
     </div>
 
-    <div id="welcome">
-      <h2>Welcome</h2>
-      <div ng-include="'text/Welcome'">
-      </div>
+    <h2 id="welcome">Welcome</h2>
+    <div ng-include="'text/Welcome'">
     </div>
     <hr>
 
-    <div id="meet">
-      <h2>Meet Anne</h2>
-      <div ng-include="'text/MeetAnne'">
-      </div>
+    <h2 id="meet">Meet Anne</h2>
+    <div ng-include="'text/MeetAnne'">
     </div>
     <hr>
 
-    <div id="approach">
-      <h2>Approach</h2>
-      <div ng-include="'text/Approach'">
-      </div>
+    <h2 id="approach">Approach</h2>
+    <div ng-include="'text/Approach'">
     </div>
     <hr>
 
-    <div id="coaching">
-      <h2>Coaching for Transformation</h2>
-      <div ng-include="'text/Coaching'">
-      </div>
+    <h2 id="coaching">Coaching for Transformation</h2>
+    <div ng-include="'text/Coaching'">
     </div>
     <hr>
 
-    <div id="training">
-      <h2>Training and Certifications</h2>
-      <div ng-include="'text/Training'">
-      </div>
+    <h2 id="training">Training and Certifications</h2>
+    <div ng-include="'text/Training'">
     </div>
     <hr>
 
-    <div id="testimonials">
-      <h2>Testimonials</h2>
-      <div ng-include="'text/Testimonials'">
-      </div>
+    <h2 id="testimonials">Testimonials</h2>
+    <div ng-include="'text/Testimonials'">
     </div>
     <hr>
 
-    <div id="contact">
-      <h2>Contact</h2>
-      <div ng-include="'text/Contact'">
-      </div>
+    <h2 id="contact">Contact</h2>
+    <div ng-include="'text/Contact'">
     </div>
 
     <br><br><br>
@@ -115,7 +101,7 @@
     				event.preventDefault();
 
   					$('html, body').animate({
-  						scrollTop: $(url).offset().top
+  						scrollTop: $(url).offset().top - 50
   					}, 500);
     			}
     		});
