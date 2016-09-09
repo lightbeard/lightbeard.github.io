@@ -36,11 +36,11 @@
   </head>
   <body>
     <div id="menu">
-      <a href="#">WELCOME</a>
-      <a href="#">MEET ANNE</a>
-      <a href="#">APPROACH</a>
-      <a href="#">TESTIMONIALS</a>
-      <a href="#">CONTACT</a>
+      <a href="#welcome">WELCOME</a>
+      <a href="#meet">MEET ANNE</a>
+      <a href="#approach">APPROACH</a>
+      <a href="#testimonials">TESTIMONIALS</a>
+      <a href="#contact">CONTACT</a>
     </div>
 
     <div id="splash">
@@ -89,5 +89,25 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script>
+    		$(document).on('click', 'a', function(event){
+
+    			var url = $.attr(this, 'href');
+
+    			if(url && url.indexOf('#') >= 0) {
+    				event.preventDefault();
+
+    				var suffix = url.split('#')[1];
+
+  					if(suffix) $('#'+suffix).removeClass('hidden');
+
+  					$('html, body').animate({
+  						scrollTop: $(url).offset().top
+  					}, 500);
+    			}
+    		});
+    	</script>
+
   </body>
 </html>
