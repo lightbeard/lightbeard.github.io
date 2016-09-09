@@ -51,6 +51,10 @@ div#splash {
   height: 35vw;
 }
 
+div#splash a {
+  color: #1c3331 !important;
+}
+
 div#splash > h1 {
   padding-top: 8vw;
   font-size: 8vw;
