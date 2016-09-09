@@ -40,7 +40,7 @@ div#splash {
   text-align: center;
   color: #1c3331;
   font-size: x-large;
-  background-image: url(img/sunset.jpg);
+  background-image: url(../img/sunset.jpg);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   width: 100%;
