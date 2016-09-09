@@ -2,6 +2,7 @@ body {
   font-family: Roboto, sans-serif;
   font-size: large;
   color: #3f726e;
+  background-color: #bff2ee;
 }
 
 h1, h2 {
@@ -28,6 +29,7 @@ div#menu {
   text-align: center;
   font-size: large;
   background-color: white;
+  border-bottom: solid 1px #bfd2ce;
 }
 
 div#menu > a {
@@ -67,5 +69,5 @@ img[src*=anne] {
   padding: 5px 20px 10px 0;
   float: left;
   max-height: 300px;
-  height: 10vw;
+  height: 20vw;
 }
