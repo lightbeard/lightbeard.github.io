@@ -39,6 +39,12 @@ div#menu > a {
   line-height: 60px;
 }
 
+@media (max-width: 600px) {
+  div#menu {
+    display: none;
+  }
+}
+
 div#splash {
   margin-top: 60px;
   text-align: center;
