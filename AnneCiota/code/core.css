@@ -2,7 +2,7 @@ body {
   font-family: Roboto, sans-serif;
   font-size: large;
   color: #3f726e;
-  background-color: #dfffe7;
+  background-color: #dfffef;
 }
 
 h1 {
@@ -13,7 +13,7 @@ h1 {
 h2 {
   font-family: Cookie, serif;
   font-size: 5vw;
-  padding-left: 12vw;
+  padding-left: 10vw;
 }
 
 p {

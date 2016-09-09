@@ -98,10 +98,6 @@
     			if(url && url.indexOf('#') >= 0) {
     				event.preventDefault();
 
-    				var suffix = url.split('#')[1];
-
-  					if(suffix) $('#'+suffix).removeClass('hidden');
-
   					$('html, body').animate({
   						scrollTop: $(url).offset().top
   					}, 500);
