@@ -2,15 +2,16 @@ body {
   font-family: Roboto, sans-serif;
   font-size: large;
   color: #3f726e;
-  background-color: #bff2ee;
+  background-color: #dfffef;
 }
 
-h1, h2 {
+h1 {
   font-family: Cookie, serif;
   text-align: center;
 }
 
 h2 {
+  font-family: Cookie, serif;
   font-size: 5vw;
 }
 
@@ -29,7 +30,7 @@ div#menu {
   text-align: center;
   font-size: large;
   background-color: white;
-  border-bottom: solid 1px #bfd2ce;
+  border-bottom: solid 2px #bfd2ce;
 }
 
 div#menu > a {
@@ -69,5 +70,5 @@ img[src*=anne] {
   padding: 5px 20px 10px 0;
   float: left;
   max-height: 300px;
-  height: 20vw;
+  height: 15vw;
 }
