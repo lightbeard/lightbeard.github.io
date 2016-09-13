@@ -233,3 +233,7 @@ img.headshot {
 	height: 200px;
 	border: solid 1px black;
 }
+
+.fa {
+	color: gray;
+}
