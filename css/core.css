@@ -77,6 +77,8 @@ img.icon[src*="meditation"] {
 	width: 60%;
 	padding: 0 10%;
 	min-height: 100%;
+	border-left: solid 1px 444;
+	border-right: solid 1px 444;
 }
 
 #backup-menu {
