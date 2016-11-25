@@ -1,25 +1,117 @@
-<html>
+<!DOCTYPE html>
+<html ng-app="AvnielApp">
 <head>
-	<meta charset="utf-8">
-	<script src="js/webcomponents.min.js"></script>
-	<link rel="import" href="imports.html">
-	<link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+  <meta charset="UTF-8">
+  <meta name="format-detection" content="telephone=no">
+  <title>Avniel Consulting</title>
+
+  <!--
+    The answer to your questions is - Yes
+    Robert did code this site himself ;-)
+  -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <script src="https://use.fontawesome.com/bb2dc4020b.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Amiri" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5b60d5">
+  <meta name="theme-color" content="#ffffff">
+
+  <link rel="stylesheet" type="text/css" href="css/core.css" />
+  <script src="js/main.js"></script>
+
 </head>
-<body style="display: none">
+<body>
+  <header>
+    <div id="menu">
+      <img src="img/elements-sm.png">
+      <span class="name">Avniel<br>Consulting</span>
+      <a href="#approach">APPROACH</a>
+      <a href="#meet">MEET ROBERT</a>
+      <a href="#testimonials">TESTIMONIALS</a>
+      <a href="#services">SERVICES</a>
+      <a href="publications.html">PUBLICATIONS</a>
+      <a href="#contact">SCHEDULE CONSULTATION</a>
+    </div>
+    <div id="splash">
+      <img class="logo" src="img/elements.png">
+      <h1 class="name">Avniel Consulting</h1>
+      <h2>Delivering the promise of exceptional technology</h2>
+      <div id="chevron">
+        <center><a href="#approach"><div class="fa fa-chevron-down rotate"></div></a></center>
+      </div>
+    </div>
+  </header>
+  <div id="content">
+    <br>
+    <h2 id="approach">Cutting through complexity</h2>
 
-<div id="main-div">
+    <p>Are you in a position where you need to use unfamiliar technology in order to gain market share? Is your organization failing to deliver the promise of technology aligned with customer success? Do you have a product or service that is stuck iteration after iteration?</p>
+    <p>These are the types of situations that truly test an organization. Having someone on-hand who understands the reality and complexity of IT can be a great help. Robert's holistic approach provides deep focus on problem areas that improve results whether it is application refactoring, design, infrastructure, process, or security.</p>
+    <p>Whether you are looking for a consultation over Skype, a 1-week assessment of your environment, or a 6-month contract with a proven hands-on technologist, <a href="#contact">contact</a> Avniel Consulting to discuss a potential engagement.</p>
+    <hr>
 
-	<p><span class="drop-cap"><img class="headshot" src="img/guidance-friendship.png"></span>Hello, I'm Robert Ross Peterson. I earned my stripes at IBM as a highly specialized enterprise consultant where I spent time with IBM's finest leadership including former CEO, Sam Palmisano. With a reputation as an IT Red Adair, I have consulted for numerous market leading companies and government agencies internationally. If you bank with a major financial institution in the US or Europe it is more likely than not, that I've conducted business with them either to advise on highly complex integration problems, to strengthen relationships, or to showcase cutting-edge technology.</p>
+    <h2 id="meet">Meet Robert</h2>
+    <p><img id="guidance-friendship" src="img/guidance-friendship.png">Robert Ross Pe­ter­son earned his stripes at IBM where as a highly acclaimed engineering talent, he developed cutting edge applications for IBM, Royal Bank of Scotland, Morgan Stanley, Macy's, Express Scripts, and the like. He later co-founded Monitoring as a Service (MaaS) startup <a href="http://www.parseix.com">parseix.com</a>. He was also a key figure in the technical implementation of the Affordable Care Act (ACA), at state and federal levels, during his tenure at the Health and Human Services Commission.</p>
+    <p>Robert is the co-author of <i>Persistence in the Enterprise</i>, he is the inventor of fifty-eight technology patents, is a frequent conference speaker, and holds a MS in Computer Science.</p>
+    <hr>
 
-	<p>Do you have an IT product or service that you are struggling to take to market? Perhaps you are in a situation where releases are consistently late or disconnected from business needs and the moral of IT staff is low? Perhaps the organization needs to grow and mature so more products or services are released, but adding staff seems to reduce productivity? Another common situation with IT is key energetic figures that held the organization together when it was smaller are either gone or overtaxed with the organization's current size and scope. Perhaps you simply seek experienced consultation in IT management and strategy.</p>
-	
-	<p>These are the types of situations that truly test an organization. With a strong consulting background both from a technology and business perspective, my leadership style is to observe an organization and identify blocking inhibitors that are preventing the organization from thriving. Based on my experience seeing first-hand how industry giants perform IT, strategy, management, sales, and marketing — my approach is to look for untapped potential in an organization where an initiative will bring the most value and results.</p>
+    <h2 id="testimonials">Testimonials</h2>
+    <p><i>Robert Peterson is an uncommon kind of leader: both devotional and rational. He is as devoted to the beauty of a solution as he is to its efficacy. He is among a rare group of exceptional consultants and researchers where he has distinguished himself through his patents, books and applications. What’s even more valuable than his accomplishments, in my view, is his rapid grasp of complexity, his total engagement, and his gracious leadership through difficulties. You will enjoy both the process and the result of working with Robert. &mdash; P.B., University Chancellor</i></p>
+    <p><i>Robert brings a breadth of skills to his clients. He excels at helping them chart a path to their desired outcome and understand the technology tradeoffs for achieving those goals. He can readily map the solution to a broad technology base to ensure clients are building an optimal solution. He is also technically hands on and can quickly prove out concepts with rapid prototyping. I highly recommend him to teams that look to be more agile or transform their technology infrastructure. &mdash; M. Gilfix, IBM Vice President</i></p>
+    <p><i>Robert operates with heart and mind. He listens with care to include and incorporate others' perspectives and capabilities. He aims to create win-win solutions so that all have buy-in, creating powerful outcomes. This care and skill greatly complements his evident intellect and creative ingenuity. &mdash; Megan White, Nonprofit CEO</i></p>
+    <p><i>I have had the pleasure to work with Robert as a colleague and was always pleased with his high level of technical expertise. Collaborating with Robert always resulted in the highest level solution possible. Robert is very professional in all aspects and hope I get the opportunity to work with Robert in the future! &mdash; John Darden, Qvantel Associate Director</i></p>
+    <p><i>Robert was influential in being a change agent here at HHSC and a big reason how and why our maturity with managing not just the Middlware layer but the greater HHSC data center has vastly improved. &mdash; Alberto Saenz, Healthcare Team Leader</i></p>
+    <hr>
 
-	<p>I'm a firm believer in measurement or key performance indicators because the facts cut through opinions and politics. For instance, if an organization is missing a consistent marketing message for market differentiation, this may be a potential initiative. However, what I consider to be far more important is quantifying the effect of the change and proving the impact of the initiative.</p>
+    <h2 id="services">An expert hired on your terms</h2>
+    <p>Areas of expertise include:</p>
+    <ul class="services">
+      <li>Fullstack Development/Design, iOS/Android/Hybrid Applications</li>
+      <li>Cloud with AWS Compute Cloud, AWS Elastic Beanstalk, Cloud Foundry, Google App Engine, and Redhat Openshift</li>
+      <li>DevOps, Middleware, Infrastructure, Security Compliance</li>
+      <li>Advanced Analytics with Hadoop and Spark</li>
+      <li>Application Performance, Scalability, and High Availability</li>
+    </ul>
+    <p>Services offered internationally are as follows:</p>
+    <ul class="services">
+      <li>Consultation via conference call, Zoom, or Skype</li>
+      <li>Remote development, design, or codebase assessment</li>
+      <li>1-2 weeks onsite engagements</li>
+    </ul>
+    <p>Additional services offered in the continental United States:</p>
+    <ul>
+      <li>Engagements or contract positions from 1-6 months</li>
+    </ul>
+    <hr>
 
-	<p>I've always had a love for technology which is reflected in my works as an author, speaker, and inventor. I have 56 granted patents, I've published several books, and I'm a frequent conference speaker.</p>
-
-</div>
+    <h2 id="contact">Schedule Consultation</h2>
+    <p>Robert works with clients internationally and his availability is not guaranteed. To work with him the first step is usually a free consultation to discuss engagement possibilities and determine if Avniel Consulting is a "good fit."</p>
+    <p>He may be reached by phone at <b>+1-413-695-5553</b> or by email at <b>info@avnielconsulting.com</b></p>
+<br><br>
+    <footer>
+        Avniel Consulting &copy; 2016 | <a style="color: #ddd !important;" href="mailto:info@avnielconsulting.com">contact</a> | <a style="color: #ddd !important;" href="https://www.linkedin.com/in/rrpeterson">linkedin</a>
+    </footer>
+  </div>
 
 </body>
 </html>
