@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Pioneer Valley Property Taxes</title>
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+<center>
+
+<b>House Price:</b> <select id="price" class="form-control">
+  <option value="200">$200,000</option>
+  <option value="210">$210,000</option>
+  <option value="220">$220,000</option>
+  <option value="230">$230,000</option>
+  <option value="240">$240,000</option>
+  <option value="250">$250,000</option>
+  <option value="260">$260,000</option>
+  <option value="270">$270,000</option>
+  <option value="280">$280,000</option>
+  <option value="290">$290,000</option>
+  <option value="300">$300,000</option>
+</select>
+
+<br><br>
+
+<table class="table-striped">
+<tr id="Heading"><td><b>Town</b></td><td><b>Monthly Taxes</b>&nbsp;&nbsp;</td><td><b>Monthly Payment</b></td></tr>
+<tr id="Hadley"><td class="town">Hadley</td><td class="cost"></td><td class="mortgage"></td></tr>
+<tr id="Montgomery"><td class="town">Montgomery</td><td class="cost"></td><td class="mortgage"></td></tr>
+<tr id="Whately"><td class="town">Whately</td><td class="cost"></td><td class="mortgage"></td></tr>
+<tr id="Easthampton"><td class="town">Easthampton</td><td class="cost"></td><td class="mortgage"></td></tr>
+<tr id="Florence"><td class="town">Florence</td><td class="cost"></td><td class="mortgage"></td></tr>
+<tr id="Northampton"><td class="town">Northampton</td><td class="cost"></td><td class="mortgage"></td></tr>
+<tr id="Southampton"><td class="town">Southampton</td><td class="cost"></td><td class="mortgage"></td></tr>
+<tr id="Agawam"><td class="town">Agawam</td><td class="cost"></td><td class="mortgage"></td></tr>
+<tr id="Granby"><td class="town">Granby</td><td class="cost"></td><td class="mortgage"></td></tr>
+<tr id="Chicopee"><td class="town">Chicopee</td><td class="cost"></td><td class="mortgage"></td></tr>
+<tr id="Monson"><td class="town">Monson</td><td class="cost"></td><td class="mortgage"></td></tr>
+<tr id="South Hadley"><td class="town">South Hadley</td><td class="cost"></td><td class="mortgage"></td></tr>
+<tr id="Ludlow"><td class="town">Ludlow</td><td class="cost"></td><td class="mortgage"></td></tr>
+<tr id="Holyoke"><td class="town">Holyoke</td><td class="cost"></td><td class="mortgage"></td></tr>
+<tr id="Westfield"><td class="town">Westfield</td><td class="cost"></td><td class="mortgage"></td></tr>
+<tr id="East Longmeadow"><td class="town">East Longmeadow&nbsp;&nbsp;</td><td class="cost"></td><td class="mortgage"></td></tr>
+<tr id="Amherst"><td class="town">Amherst</td><td class="cost"></td><td class="mortgage"></td></tr>
+<tr id="Wilbraham"><td class="town">Wilbraham</td><td class="cost"></td><td class="mortgage"></td></tr>
+</table>
+
+</center>
+
+<script>
+
+	var rateMap = {
+		'Hadley': 11.15,
+		'Montgomery': 14.19,
+		'Whately': 14.96,
+		'Easthampton': 15.59,
+		'Florence': 16.16,
+		'Northampton': 16.16,
+		'Southampton': 16.17,
+		'Agawam': 16.18,
+		'Granby': 16.78,
+		'Chicopee': 16.91,
+		'Monson': 17.12,
+		'South Hadley': 17.56,
+		'Ludlow': 18.13,
+		'Westhampton': 18.90,
+		'Holyoke': 19.12,
+		'Westfield': 19.44,
+		'East Longmeadow': 21.12,
+		'Amherst': 21.22,
+		'Wilbraham': 21.60
+	};
+
+	function updateTable() {
+		var price = Number($('#price')[0].value);
+
+		$('tr').each(function(i, tr){
+			var town = $(tr).attr('id');
+			if(town === 'Heading') return;
+			var rate = rateMap[town];
+			var housePrice = $('#price').val();
+			var tax = ( housePrice * rate ) / 12;
+			$('td.cost', tr).html('$' + tax.toFixed(2));
+			var mortgage = ((5.5 / 100 / 12) * housePrice * 1000) / (1 - ( Math.pow( 1 + 5.5 / 100 / 12,  -30 * 12)  ));
+			$('td.mortgage', tr).html('$' + (tax + mortgage).toFixed(2));
+		});	
+	}
+
+	updateTable();
+
+	$('#price').on('change', updateTable);
+</script>
+
+</body>
+
+</html>
