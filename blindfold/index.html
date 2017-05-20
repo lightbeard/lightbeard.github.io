@@ -63,6 +63,8 @@ FEN:&nbsp;
 
   var chess = new Chess($('#fen').val());
 
+  console.log('#######', $('#fen').val());
+  
   $('.btn').click(function(e) {
     var $btn = $(e.target);
     var $previous = $('.highlight');
