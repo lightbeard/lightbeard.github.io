@@ -63,7 +63,7 @@ FEN:&nbsp;
 
   var chess = new Chess($('#fen').val());
 
-  console.log(chess.validate_fen($('#fen').val()), chess.ascii());
+  alert(chess.ascii());
   
   $('.btn').click(function(e) {
     var $btn = $(e.target);
