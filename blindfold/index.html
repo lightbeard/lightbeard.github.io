@@ -52,6 +52,9 @@ FEN:&nbsp;
 
 
 <script>
+  
+  var cache = localStorage.getItem('fen');
+  if(cache) $('#fen').val(cache);
 
   var chess = new Chess($('#fen').val());
   
@@ -67,6 +70,16 @@ FEN:&nbsp;
         $('#san').html(san);
       }
   };
+  
+  $('#update').click(function(e) {
+    var fen = $('#fen').val();
+    if(chess.validate_fen(fen)) {
+      localStorage.setItem('fen', fen);
+      chess = new Chess(fen);
+    } else {
+      alert('invalid fen');
+    }
+  });
   
   $('.btn').click(function(e) {
     var $btn = $(e.target);
