@@ -77,7 +77,7 @@ FEN:&nbsp;
   
   $('#update').click(function(e) {
     var fen = $('#fen').val();
-    if(chess.validate_fen(fen)) {
+    if((new Chess()).validate_fen(fen)) {
       localStorage.setItem('fen', fen);
       chess = new Chess(fen);
     } else {
