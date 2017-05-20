@@ -22,7 +22,7 @@
   </style>
 
 </head>
-<br>
+<p id="san"></p>
 FEN:&nbsp;
 <input id="fen" type="text" size="50" value="5rk1/8/8/8/8/8/8/4K3 w - - 0 50">&nbsp;&nbsp;<button id="update">update</button><br>
 <br>
@@ -60,9 +60,11 @@ FEN:&nbsp;
 
   stockfish.onmessage = function(event) {
       if(event.data.indexOf('bestmove') >= 0) {
-        console.log(event);
-        var move = /bestmove\s(\w\d\w\d)/.exec(event.data)[1];
-        alert(move);
+        var move = /bestmove\s(\w\d)(\w\d)/.exec(event.data);
+        chess.move({from:move[0], to:move[1]});
+        
+        var san = chess.history()[chess.history().length - 1];
+        $('#san').html(san);
       }
   };
   
