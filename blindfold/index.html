@@ -24,7 +24,10 @@
 </head>
 <p id="san"></p>
 FEN:&nbsp;
-<input id="fen" type="text" size="50" value="5rk1/8/8/8/8/8/8/4K3 w - - 0 50">&nbsp;&nbsp;<button id="update">update</button><br>
+<input id="fen" type="text" size="50" value="5rk1/8/8/8/8/8/8/4K3 w - - 0 50">
+  <br>
+  <button id="update">update</button><br>
+  <button id="peek">peek</button>
 <br>
 <button class="btn">a</button>
 <button class="btn">b</button>
@@ -64,7 +67,7 @@ FEN:&nbsp;
   stockfish.onmessage = function(event) {
       if(event.data.indexOf('bestmove') >= 0) {
         var move = /bestmove\s(\w\d)(\w\d)/.exec(event.data);
-        chess.move({from:move[0], to:move[1]});
+        var ok = chess.move({from:move[1], to:move[2]});
         
         var san = chess.history()[chess.history().length - 1];
         $('#san').html(san);
@@ -79,6 +82,10 @@ FEN:&nbsp;
     } else {
       alert('invalid fen');
     }
+  });
+  
+  $('#peek').click(function() {
+    alert(chess.ascii());
   });
   
   $('.btn').click(function(e) {
