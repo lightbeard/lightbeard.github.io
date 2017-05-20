@@ -61,7 +61,7 @@ FEN:&nbsp;
       console.log(event.data ? event.data : event);
   };
 
-  var chess = new Chess();
+  var chess = new Chess($('#fen').val());
 
   console.log(chess.validate_fen($('#fen').val()), chess.ascii());
   
