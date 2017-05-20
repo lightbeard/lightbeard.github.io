@@ -85,8 +85,10 @@ FEN:&nbsp;
       }
 
       var ok = chess.move(san);
-      if(!ok) alert('invalid san: ' + san);
-      else {
+      if(!ok) {
+        console.log(chess.ascii());
+        alert('invalid san: ' + san);
+      } else {
         var h = chess.history({ verbose: true });
         h = h[h.length - 1];
 
