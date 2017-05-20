@@ -54,14 +54,14 @@ FEN:&nbsp;
 <script>
 
   var stockfish = new Worker("stockfish.js");
-  stockfish.postMessage("position fen " + $('#fen').html());
+  stockfish.postMessage("position fen " + $('#fen').val());
 
   stockfish.onmessage = function(event) {
       //NOTE: Web Workers wrap the response in an object.
       console.log(event.data ? event.data : event);
   };
 
-  var chess = new Chess($('#fen').html());
+  var chess = new Chess($('#fen').val());
 
   $('.btn').click(function(e) {
     var $btn = $(e.target);
