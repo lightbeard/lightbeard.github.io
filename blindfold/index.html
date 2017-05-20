@@ -90,10 +90,8 @@ FEN:&nbsp;
       if(!ok) {
         alert('invalid san: ' + san);
       } else {
-        var h = chess.history({ verbose: true });
-        h = h[h.length - 1];
-
-        stockfish.postMessage('position moves ' + h.from + h.to);
+        stockfish.postMessage('position fen ' + chess.fen());
+        stockfish.postMessage('go depth 8');
       }
     }
   });
