@@ -61,9 +61,9 @@ FEN:&nbsp;
       console.log(event.data ? event.data : event);
   };
 
-  var chess = new Chess($('#fen').val());
+  var chess = new Chess();
 
-  console.log('#######', chess.ascii());
+  console.log(chess.validate_fen($('#fen').val()), chess.ascii());
   
   $('.btn').click(function(e) {
     var $btn = $(e.target);
