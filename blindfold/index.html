@@ -27,7 +27,8 @@ FEN:&nbsp;
 <input id="fen" type="text" size="50" value="5rk1/8/8/8/8/8/8/4K3 w - - 0 50">
   <br><br>
   <button id="update">update</button>&nbsp;&nbsp;
-  <button id="peek">peek</button>
+  <button id="peek">peek</button>&nbsp;&nbsp;
+  <button id="pass">pass</button>
 <br><br>
 <button class="btn">a</button>
 <button class="btn">b</button>
@@ -86,6 +87,11 @@ FEN:&nbsp;
   
   $('#peek').click(function() {
     alert(chess.ascii());
+  });
+  
+  $('#pass').click(function() {
+     stockfish.postMessage('position fen ' + chess.fen());
+     stockfish.postMessage('go depth 8');
   });
   
   $('.btn').click(function(e) {
