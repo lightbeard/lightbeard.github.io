@@ -62,8 +62,6 @@ FEN:&nbsp;
   };
 
   var chess = new Chess($('#fen').val());
-
-  alert(chess.ascii());
   
   $('.btn').click(function(e) {
     var $btn = $(e.target);
@@ -88,7 +86,7 @@ FEN:&nbsp;
 
       var ok = chess.move(san);
       if(!ok) {
-        alert('invalid san: ' + san);
+        alert('invalid san: ' + san + '\n' + chess.ascii());
       } else {
         stockfish.postMessage('position fen ' + chess.fen());
         stockfish.postMessage('go depth 8');
