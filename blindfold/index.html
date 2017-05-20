@@ -60,6 +60,7 @@ FEN:&nbsp;
 
   stockfish.onmessage = function(event) {
       if(event.data.indexOf('bestmove' >= 0)) {
+        console.log(event);
         var move = /bestmove\s(\w\d\w\d)/.exec(event.data)[1];
         alert(move);
       }
