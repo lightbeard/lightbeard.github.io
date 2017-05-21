@@ -122,7 +122,7 @@ FEN:&nbsp;
         san = $($previous[1]).html() + $($previous[0]).html() + $btn.html();
       }
 
-      var ok = chess.move(san);
+      var ok = chess.move(san, {sloppy: true});
       if(!ok) {
         alert('invalid san: ' + san + '\n' + chess.ascii());
       } else {
