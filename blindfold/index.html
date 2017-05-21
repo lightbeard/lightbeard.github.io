@@ -105,14 +105,14 @@ FEN:&nbsp;
   });
   
   $('.btn').click(function(e) {
-    var $btn = $(e.target);
+    var char = $(e.target).html();
     var $previous = $('.highlight');
 
-    select += $previous.html();
+    select += char;
     
     $btn.addClass('highlight');
 
-    if(/\d/.test($previous.html())) {
+    if(/\d/.test(char)) {
       
       $('.highlight').removeClass('highlight');
 
