@@ -116,12 +116,12 @@ FEN:&nbsp;
     if(/\d/.test(char)) {
       
       $('.highlight').removeClass('highlight');
-
+      select = '';
+      
       var ok = chess.move(select);
       if(!ok) {
         alert('invalid san: ' + select + '\n' + chess.ascii());
       } else {
-        select = '';
         stockfish.postMessage('position fen ' + chess.fen());
         stockfish.postMessage('go depth 8');
       }
