@@ -58,6 +58,7 @@ FEN:&nbsp;
 <button class="btn">R</button>
 <button class="btn">Q</button>
 <button class="btn">K</button>
+<button class="btn">x</button>
 
 
 <script>
@@ -122,7 +123,7 @@ FEN:&nbsp;
         san = $($previous[1]).html() + $($previous[0]).html() + $btn.html();
       }
 
-      var ok = chess.move(san, {sloppy: true});
+      var ok = chess.move(san);
       if(!ok) {
         alert('invalid san: ' + san + '\n' + chess.ascii());
       } else {
