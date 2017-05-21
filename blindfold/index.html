@@ -71,7 +71,9 @@ FEN:&nbsp;
   stockfish.postMessage("position fen " + $('#fen').val());
 
   stockfish.onmessage = function(event) {
-      if(event.data.indexOf('bestmove') >= 0) {
+      if(event.data.indexOf('mate') >= 0) {
+        $('#san').html('mate');
+      } else if(event.data.indexOf('bestmove') >= 0) {
         var move = /bestmove\s(\w\d)(\w\d)/.exec(event.data);
         var ok = chess.move({from:move[1], to:move[2]});
         
