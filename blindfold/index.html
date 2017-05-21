@@ -105,7 +105,8 @@ FEN:&nbsp;
   });
   
   $('.btn').click(function(e) {
-    var char = $(e.target).html();
+    var $btn = $(e.target);
+    var char = $btn.html();
     var $previous = $('.highlight');
 
     select += char;
