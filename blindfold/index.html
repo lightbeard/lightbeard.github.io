@@ -63,6 +63,8 @@ FEN:&nbsp;
 
 <script>
   
+  var selection = '';
+  
   var cache = localStorage.getItem('fen');
   if(cache) $('#fen').val(cache);
 
@@ -106,27 +108,21 @@ FEN:&nbsp;
     var $btn = $(e.target);
     var $previous = $('.highlight');
 
+    select += $previous.html();
+    
     $btn.addClass('highlight');
+    
+    var charComplete = /N|B|R|Q|K|x/g.test(select) ? 3 : 2;
 
-    if($previous.length === 2 || $previous.length === 1 && !/N|B|R|Q|K/.test($previous.html())) {
-      // last char of san
-
+    if(charComplete) {
+      
       $('.highlight').removeClass('highlight');
 
-      var san;
-
-      if($previous.length == 1) {
-        san = $previous.html() + $btn.html();
-      } else if(/N|B|R|Q|K/.test($($previous[0]).html())) {
-        san = $($previous[0]).html() + $($previous[1]).html() + $btn.html();
-      } else {
-        san = $($previous[1]).html() + $($previous[0]).html() + $btn.html();
-      }
-
-      var ok = chess.move(san);
+      var ok = chess.move(select);
       if(!ok) {
-        alert('invalid san: ' + san + '\n' + chess.ascii());
+        alert('invalid san: ' + select + '\n' + chess.ascii());
       } else {
+        select = '';
         stockfish.postMessage('position fen ' + chess.fen());
         stockfish.postMessage('go depth 8');
       }
