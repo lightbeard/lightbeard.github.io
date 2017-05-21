@@ -114,7 +114,7 @@ FEN:&nbsp;
     
     var charComplete = /N|B|R|Q|K|x/g.test(select) ? 3 : 2;
 
-    if(charComplete) {
+    if(select.length === charComplete) {
       
       $('.highlight').removeClass('highlight');
 
