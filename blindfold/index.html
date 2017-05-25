@@ -117,7 +117,7 @@ FEN:&nbsp;
       
       $('.highlight').removeClass('highlight');
       
-      var ok = chess.move(select);
+      var ok = chess.move(select, {'sloppy':true});
       if(!ok) {
         alert('invalid san: ' + select + '\n' + chess.ascii());
       } else {
