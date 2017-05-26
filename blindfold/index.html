@@ -34,6 +34,19 @@ FEN:&nbsp;
   <button id="update">update</button>&nbsp;&nbsp;
   <button id="peek">peek</button>&nbsp;&nbsp;
   <button id="pass">pass</button>
+  <select id="score">
+    <option value="1">100cp</option>
+    <option value="2">200cp</option>
+    <option value="3">300cp</option>
+  </select>
+  <select id="pieceCnt">
+    <option value="any" selected="selected">any</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+  </select>
+  
 <br><br>
 <button class="btn">a</button>
 <button class="btn">b</button>
@@ -128,6 +141,17 @@ FEN:&nbsp;
       select = '';
     }
   });
+  
+  $('#pieceCnt').on('change', function() {
+    var pieceCnt = $(e.target).val();
+    alert(pieceCnt);
+  });
+  
+  $('#score').on('change', function() {
+    var score = $(e.target).val();
+    alert(score);
+  });
+  
 </script>
 
 <body>
