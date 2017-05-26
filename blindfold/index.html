@@ -35,9 +35,10 @@ FEN:&nbsp;
   <button id="peek">peek</button>&nbsp;&nbsp;
   <button id="pass">pass</button>
   <select id="score">
+    <option value="0">0cp</option>
     <option value="1">100cp</option>
     <option value="2">200cp</option>
-    <option value="3">300cp</option>
+    <option value="3" selected="selected">300cp</option>
   </select>
   <select id="pieceCnt">
     <option value="any" selected="selected">any</option>
@@ -149,7 +150,11 @@ FEN:&nbsp;
     var score = $('#score').val();
     
     if(pieceCnt === 'any') pieceCnt = Math.floor(Math.random() * 14) + 3;
-    alert(pieceCnt);
+    
+    var section = fens[String(pieceCnt)][score];
+    
+    var index = Math.floor(Math.random() * section.length);
+    $('#fen').html(section[index]);
   });
   
 </script>
