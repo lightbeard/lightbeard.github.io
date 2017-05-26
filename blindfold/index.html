@@ -151,6 +151,8 @@ FEN:&nbsp;
     
     if(pieceCnt === 'any') pieceCnt = Math.floor(Math.random() * 14) + 3;
     
+    console.log(String(pieceCnt), score, fens);
+    
     var section = fens[String(pieceCnt)][score];
     
     var index = Math.floor(Math.random() * section.length);
