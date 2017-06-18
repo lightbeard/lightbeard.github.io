@@ -99,7 +99,7 @@ FEN:&nbsp;
 
         if(!ok) ok = chess.move({from:move[1], to:move[2], flags:'pc'});
 
-        if(!ok) alert('failed to parse stockfish move: ' + event.data);
+        if(!ok) alert('failed to parse stockfish move: ' + event.data + ' ' + move[1] + move[2]);
 
         var san = chess.history()[chess.history().length - 1];
         $('#san').html(san);
