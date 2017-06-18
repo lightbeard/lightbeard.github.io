@@ -95,9 +95,7 @@ FEN:&nbsp;
         var move = /bestmove\s(\w\d)(\w\d)/.exec(event.data);
         var ok = chess.move({from:move[1], to:move[2]});
 
-        if(!ok) ok = chess.move({from:move[1], to:move[2], flags:'p'});
-
-        if(!ok) ok = chess.move({from:move[1], to:move[2], flags:'pc'});
+        if(!ok) ok = chess.move({from:move[1], to:move[2], promotion:'q'});
 
         if(!ok) alert('failed to parse stockfish move: ' + event.data + ' ' + move[1] + move[2]);
 
