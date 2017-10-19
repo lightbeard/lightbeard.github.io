@@ -1,241 +1,204 @@
-@charset 'UTF-8';
-
-@font-face {
-    font-family: lotr;
-    src: url(hobbitonbrushhand.ttf);
-}
-
-h1 {
-	text-align: center;
-	font-size: 3vw;
-	font-weight: normal;
-}
-
-h1, h2 {
-	font-family: 'Bitter';
-}
-
-span.drop-cap { 
-	float: left; 
-	color: black; font-size: 7em; 
-	line-height: 0.9em; 
-	margin: 0 0.2em 0 3px; 
-	font-family: 'Bitter', Arial, sans-serif; 
-}
-
 body {
-	font-size: 1.5vw;
-	font-family: 'Roboto', Arial, sans;
-	margin: 0 0;
-	padding: 0 0;
-	background-image: url(../img/harmony-pattern.jpg);
-	background-repeat: repeat;
-	height: 100%;
-}
-
-p {
-	line-height: 1.3em;
-    font-size: 1.2em;
-	font-weight: lighter;
-	text-align: justify;
-}
-
-a:link, a:visited {
-	color: #88614c;
-	text-decoration: none;
-}
-
-a:hover, a:active {
-	color: #88614c;
-	text-decoration: underline;
-	text-decoration-color: #A8917c;
-	-moz-text-decoration-color: #A8917c;
-	-webkit-text-decoration-color: #A8917c;
-}
-
-
-img.drop-cap {
-	height: 5em;
-	padding-right: 1em;
-	padding-bottom: 0.5em;
-}
-
-img.icon {
-	max-height: 4em;
-	max-width: 7em;
-	float: left;
-	margin: 0 0.7em 0 0.5em;
-}
-
-img.icon[src*="meditation"] {
-	max-height: 6em;
-}
-
-#main-div {
-	background-color: #F7F7FF;
-	margin: 0 auto;
-	width: 60%;
-	padding: 0 10%;
-	min-height: 100%;
-	border-left: solid 1px #677;
-	border-right: solid 1px #677;
-}
-
-#backup-menu {
-	text-align: center;
-}
-
-#backup-menu ol {
-	display: inline-block;
-	margin: 0 auto;
-	padding: 0;
-	list-style-type: none;
-}
-
-#backup-menu li {
-	display: table-cell;
-	text-align: center;
-	padding: 0 0.2em;
-}
-
-#backup-menu a, #backup-menu a:hover, #backup-menu a:visited, #backup-menu a:link, #backup-menu a:active {
-	color: black;
-	text-decoration: none;
-}
-
-#backup-menu img {
-	max-height: 90px;
-	width: 4.5em;
-}
-
-#dock ol {
-    list-style-type: none;
     margin: 0;
     padding: 0;
-    overflow: hidden;
-	text-align: center;
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: 100;
 }
 
-#dock li {
-    display: inline;
+span.name {
+  font-family: 'Amiri', serif;
 }
 
-#dock li a {
-	font-family: 'Roboto', Arial, sans-serif;
-	font-weight: bold;
-    display: inline-block;
+p, ul {
+  font-size: 1.5em;
+  color: #444;
+}
+
+h2 {
+  margin: 0 !important;
+  padding: 1vw 7vw 1vw 7vw;
+}
+
+p, h3 {
+  padding: 0.2vw 7vw 0.2vw 7.5vw;
+  text-align: justify;
+}
+
+ul {
+  padding: 0 7vw 0 9vw;
+}
+
+li {
+  padding: 0.2vw 0;
+}
+
+div#trustee {
+  text-align: center;
+  color: black;
+}
+
+div#trustee img {
+  height: 80px;
+}
+
+span.name {
+  line-height: 1.25em;
+  float: left;
+  text-align: left;
+  padding: 3px 0.6em 0 0.4em;
+  font-size: 1.85em;
+}
+
+h1.name {
+  font-size: 4vw;
+  padding-bottom: 12vh;
+  padding-top: 20vh;
+}
+
+h2#motto {
+  font-size: 2.5vw;
+  padding: 6vh 0;
+}
+
+div#chevron {
+  padding-top: 4vh;
+}
+
+img.img-padding {
+  float: left;
+  margin: 10px 20px 5px 0;
+  border: 1px solid #222;
+}
+
+hr {
+  border-top: 1px solid #ddd;
+}
+
+header {
+    height: 50vw;
+    width: 100%;
+    margin: 0;
+    padding: 0;
     color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+    background: url("../img/guidance.jpg") no-repeat top center fixed;
+    background-size: cover;
 }
 
-#dock li a:hover {
-    background-color: #112;
+#menu img:hover, #menu span:hover {
+  cursor: pointer;
 }
 
-#dock a, a:visited { 
-	outline: none 
-}
-#dock img {
-	border: none;
-}
-
-.dock {
-	position: relative; 
-	height: 90px; 
-	text-align: center;
-}
-.dock-container {
-	position: absolute;
-	height: 90px;
-}
-a.dock-item {
-	display: block;
-	width: 80px;
-	color: #777;
-	position: absolute;
-	top: 0px;
-	text-align: center;
-	text-decoration: none;
-	font-family: 'Roboto', Arial, sans-serif;
-	font-weight: bold;
-}
-.dock-item img {
-	border: none;
-	width: 100%; 
-}
-.dock-item span {
-	display: none;
-	padding-top: 5px;
+footer {
+  color: #ddd;
+  background-color: #333;
+  text-align: center;
+  padding: 2em;
 }
 
-#pictures {
-	max-height: 60%;
+footer a {
+  text-decoration: none;
+  font-weight: 100;
+  color: #ddd !important;
 }
 
-#picture li button:before {
-	font-size: 10px;
+img.client {
+  height: 4vw;
+  margin: 0 4vw;
+  border: 1px solid #eee;
 }
 
-#picture img {
-	margin: auto;
-	max-height: 60%;
-	max-width: 70%;
-	border: 1px #444 solid;
+img.client-x {
+  height: 4.5vw;
+  margin: 0 4vw;
+  border: 1px solid #eee;
 }
 
-.carousel {
-	margin: auto;
-	width: 45vw;
+a, a:visited, a:active, a:hover, a:focus {
+  text-decoration: none !important;
+	color: #445 !important;
+  font-weight: bold;
 }
 
-.carousel img {
-	margin: auto;
-	max-height: 600px;
-	height: 25vw;
-	border: solid #333 1px;
+.rotate::before {
+  font-size: 2.4vw;
+  line-height: 3.7vw;
 }
 
-#footer {
-    margin: auto;
-    padding: 20px;
-    width: 18vw;
-	text-align: center;
-	font-size: 1vw;
+.rotate{
+    height: 4vw;
+    width: 4vw;
+    -moz-transition: all 0.4s linear;
+    -webkit-transition: all 0.4s linear;
+    transition: all 0.4s linear;
+    border-radius: 50%;
+    border: 1px solid white;
 }
 
-#footer span {
-	display: inline-block;
-	text-align: center;
-	padding-bottom: 2px;
+.rotate.motion {
+    -moz-transform:rotate(360deg);
+    -webkit-transform:rotate(360deg);
+    transform:rotate(360deg);
 }
 
-#footer-carousel {
-	border-bottom: 1px black solid;
-	border-top: 1px black solid;
+div#menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  background-color: white;
+  text-align: center;
+  color: #444;
+  line-height: 5em;
+  border-bottom: 1px solid grey;
 }
 
-#footer img {
-	margin: auto;
-	height: 4vw;
+div#menu a {
+  padding-right: 2em;
+  font-size: 1.3vw;
+  color: black !important;
+  font-weight: 400;
 }
 
-#footer img[src*="jquery"] {
-	height: 40px;
-	padding-top: 12px;
+div#menu > img {
+  float: left;
+  height: 4em;
+  padding-left: 20px;
+  margin-top: 0.5em;
 }
 
-#footer img[src*="gfont"] {
-	height: 40px;
-	padding-top: 12px;
+div#splash {
+  margin-top: 5em;
+  height: 90vh;
+  color: white;
+  line-height: normal;
+  text-align: center;
 }
 
-img.headshot {
-	height: 200px;
-	border: solid 1px black;
+div#splash a {
+  color: white !important;
 }
 
-.fa {
-	color: #444;
+div#splash h1, div#splash h2  {
+  font-weight: 100;
+}
+
+div#splash > img.logo {
+  height: 8vw;
+  margin-top: 12vh;
+}
+
+div#content {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5ff;
+}
+
+.indent {
+  margin-left: 2em;
+}
+
+.ts {
+  margin-left: 0.5em;
 }
