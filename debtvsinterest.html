@@ -10,7 +10,7 @@
   <input id="M" placeholder="loan payment (M)"></input><br>
   <input id="p" placeholder="principle payment (p)"></input><br>
   <input id="n" placeholder="monthly principle count (n)"></input><br>
-  <input id="r" placeholder="market interest rate (r)"></input><br>
+  <input id="r" placeholder="yearly market interest rate (r)"></input><br>
   <button>Submit</button><br><br>
 
   <p></p>
@@ -27,12 +27,29 @@
       let M = Number($('#M').val());
       let p = Number($('#p').val());
       let n = Number($('#n').val());
-      let r = Number($('#r').val());
+      let r = Number($('#r').val()) / 100 / 12;
       let T1 = T / (n + 1);
       let T2 = T - T / (n + 1);
       
       print(`T=${T} T1=${T1} T2=${T2} M=${M} p=${p} n=${n} r=${r}`);
       
+      r = r / 100 / 12;
+      
+      print('covert r to monthly interest rate: ' + r);
+      
+      print('=== calculating debt savings ===');
+      
+      let S1 = T1 * n * (M - p);
+      
+      print('period 1 savings: $' + S1);
+      
+      let S2 = 0;
+      for(let i=0; i<Math.round(T2); i++) {
+          S2 = (S2 + M) * (1+r);
+      }
+      
+      print('peroid 2 savings: $' + S2);
+      print('total debt savings: $' + (S1 + S2));
       
     });
   </script>
