@@ -27,7 +27,7 @@
       let M = Number($('#M').val());
       let p = Number($('#p').val());
       let n = Number($('#n').val());
-      let r = Number($('#r').val()) / 100 / 12;
+      let r = Number($('#r').val());
       let T1 = T / (n + 1);
       let T2 = T - T / (n + 1);
       
@@ -50,6 +50,10 @@
       
       print('peroid 2 savings: $' + S2);
       print('total debt savings: $' + (S1 + S2));
+      
+      print(' ');
+      //print('=== calculating interest savings ===');
+
       
     });
   </script>
