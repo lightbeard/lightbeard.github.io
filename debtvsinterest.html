@@ -19,6 +19,8 @@
     
     $('button').click(function() {
       
+      $('p').html('');
+      
       function print(str) {
         $('p').html($('p').html() + str + '<br>');
       }
@@ -33,7 +35,7 @@
       
       print(`T=${T} T1=${T1} T2=${T2} M=${M} p=${p} n=${n} r=${r}`);
       
-      r = r / 100 / 12;
+      r = (r + 1) ** (1/12) - 1;
       
       print('covert r to monthly interest rate: ' + r);
       
@@ -49,11 +51,29 @@
       }
       
       print('peroid 2 savings: $' + S2);
-      print('total debt savings: $' + (S1 + S2));
+      
+      let debtsave = S1 + S2;
+      
+      print('total debt savings: $' + debtsave);
       
       print(' ');
-      //print('=== calculating interest savings ===');
+      print('=== calculating interest savings ===');
 
+      let balance = 0;
+      for(let i=0; i<Math.round(T1); i++) {
+        balance = (balance + n * p) * (1+r);
+      }
+      
+      S1 = balance;
+      
+      print('peroid 1 savings: $' + S1);
+      
+      balance = balance * (1 + r) ** Math.round(T2);
+      
+      print('peroid 2 savings: $' + (balance - S1));
+      
+      print('=== TOTAL DEBT vs MARKET SAVINGS ===');
+      print(`=== ${debtsave} vs. === ${balance}`);
       
     });
   </script>
