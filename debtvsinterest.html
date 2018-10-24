@@ -9,6 +9,8 @@
   <input id="T" placeholder="months left"></input><br>
   <input id="M" placeholder="loan payment"></input><br>
   <input id="p" placeholder="principle payment"></input><br>
+  <input id="n" placeholder="number of monthly principle payments"></input><br>
+  <input id="r" placeholder="market interest rate"></input><br>
   <button>Submit</button><br><br>
 
   <p></p>
@@ -21,7 +23,13 @@
         $('p').html($('p').html() + str + '<br>');
       }
       
-      print('hello world');
+      let T = Number($('#T'));
+      let M = Number($('#M'));
+      let p = Number($('#p'));
+      let n = Number($('#n'));
+      let r = Number($('#r'));
+      
+      print(`T=${T} M=${M} p=${p} n=${n} r=${r}`);
     });
   </script>
 
