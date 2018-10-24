@@ -28,8 +28,12 @@
       let p = Number($('#p'));
       let n = Number($('#n'));
       let r = Number($('#r'));
+      let T1 = T / (n + 1);
+      let T2 = T - T / (n + 1);
       
-      print(`T=${T} M=${M} p=${p} n=${n} r=${r}`);
+      print(`T=${T} T1=${T1} T2=${T2} M=${M} p=${p} n=${n} r=${r}`);
+      
+      
     });
   </script>
 
