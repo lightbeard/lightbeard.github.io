@@ -38,7 +38,7 @@
       r = (r + 1) ** (1/12) - 1;
       
       print('covert r to monthly interest rate: ' + r);
-      
+      print(' ');
       print('=== calculating debt savings ===');
       
       let S1 = T1 * n * (M - p);
@@ -71,7 +71,7 @@
       balance = balance * (1 + r) ** Math.round(T2);
       
       print('peroid 2 savings: $' + (balance - S1));
-      
+      print(' ');
       print('=== TOTAL DEBT vs MARKET SAVINGS ===');
       print(`=== ${debtsave} vs. === ${balance}`);
       
