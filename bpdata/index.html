@@ -21,7 +21,7 @@
 <h4>IRRITABILITY</h4>
 
 <p>How much have you suffered from irritability?</p>
-<select id="q1">
+<select class="sis" id="q1">
   <option value="not_answered"></option>
   <option value="0">Not At All - 0</option>
   <option value="1">Mildly - 1</option>
@@ -40,7 +40,7 @@
 <h4>FRUSTRATION</h4>
 
 <p>How much have you suffered from frustration?</p>
-<select id="q2">
+<select class="sis" id="q2">
   <option value="not_answered"></option>
   <option value="0">Not At All - 0</option>
   <option value="1">Mildly - 1</option>
@@ -59,7 +59,7 @@
 <h4>EDGINESS / IMPATIENCE / OVEREACTION</h4>
 
 <p>How much have you suffered from edginess / impatience / overeaction to minor annoyances?</p>
-<select id="q3">
+<select class="sis" id="q3">
   <option value="not_answered"></option>
   <option value="0">Not At All - 0</option>
   <option value="1">Mildly - 1</option>
@@ -78,7 +78,7 @@
 <h4>MOODINESS</h4>
 
 <p>How much have you suffered from moodiness?</p>
-<select id="q4">
+<select class="sis" id="q4">
   <option value="not_answered"></option>
   <option value="0">Not At All - 0</option>
   <option value="1">Mildly - 1</option>
@@ -97,7 +97,7 @@
 <h4>ANGER WITH SELF</h4>
 
 <p>How much have you suffered from feelings of anger with yourself?</p>
-<select id="q5">
+<select class="sis" id="q5">
   <option value="not_answered"></option>
   <option value="0">Not At All - 0</option>
   <option value="1">Mildly - 1</option>
@@ -116,7 +116,7 @@
 <h4>ANGER WITH OTHERS</h4>
 
 <p>How much have you felt angry towards others?</p>
-<select id="q6">
+<select class="sis" id="q6">
   <option value="not_answered"></option>
   <option value="0">Not At All - 0</option>
   <option value="1">Mildly - 1</option>
@@ -135,7 +135,7 @@
 <h4>TEMPER</h4>
 
 <p>How much have you lost your temper, shouted or snapped at others?</p>
-<select id="q7">
+<select class="sis" id="q7">
   <option value="not_answered"></option>
   <option value="0">Not At All - 0</option>
   <option value="1">Mildly - 1</option>
@@ -150,6 +150,41 @@
   <option value="10">Extremely - 10</option>
 </select>
 <br><br>
+
+<p>What is your mood state?</p>
+<select id="q8">
+  <option value="not_answered"></option>
+  <option value="-2">Depression: -2</option>
+  <option value="-1">Mild Depression: -1</option>
+  <option value="0">Normal: 0</option>
+  <option value="1">Hypo Mania: 1</option>
+  <option value="2">Mania: 2</option>
+</select>
+<br><br>
+
+<p>How much did you sleep?</p>
+<select id="q9">
+  <option value="not_answered"></option>
+  <option value="0">None</option>
+  <option value="1">1 Hour</option>
+  <option value="2">2 Hours</option>
+  <option value="3">3 Hours</option>
+  <option value="4">4 Hours</option>
+  <option value="5">5 Hours</option>
+  <option value="6">6 Hours</option>
+  <option value="7">7 Hours</option>
+  <option value="8">8 Hours</option>
+  <option value="9">9 Hours</option>
+  <option value="10">10 Hours</option>
+  <option value="11">11 Hours</option>
+  <option value="12">12 Hours</option>
+</select>
+<br><br>
+
+<p>Daily Notes</p>
+<textarea id="q10" cols="50" rows="10"></textarea>
+<br><br>
+
 <button>Submit</button>
 <br>
 <br>
@@ -176,13 +211,19 @@ if(now > four) {
 $('button').click(_ => {
 
   let score = 0;
+  let mood;
+  let sleep;
+  const daily_notes = $('#q10').val();
+
   let answers = $('select');
   for (let answer of answers) {
     if($(answer).val() === 'not_answered') {
       alert('answer all questions');
       return;
     } else {
-      score += Number($(answer).val());
+      if($(answer).hasClass('sis')) score += Number($(answer).val());
+      else if($(answer).attr('id') == 'q8') mood = Number($(answer).val());
+      else if($(answer).attr('id') == 'q9') sleep = Number($(answer).val());
     }
   }
 
@@ -198,7 +239,10 @@ $('button').click(_ => {
 
     data.push({
       score: score,
-      date: new Date()
+      date: new Date(),
+      mood: mood,
+      sleep: sleep,
+      notes: daily_notes
     });
 
     $.ajax({
