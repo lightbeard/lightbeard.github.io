@@ -1,0 +1,101 @@
+<html>
+<head>
+
+<meta name="theme-color" content="#ffffff">
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Mood Chart</title>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js" integrity="sha512-VCHVc5miKoln972iJPvkQrUYYq7XpxXzvqNfiul1H4aZDwGBGC0lq373KNleaB2LpnC2a/iNfE5zoRYmB4TRDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+<body style="padding: 11px">
+
+
+<p><u>Mood Legend</u></p>
+<ol style="font-family: monospace">
+  <li>+20: Mania</li>
+  <li>+10: Hypo Mania</li>
+  <li>&nbsp;&nbsp;0: Neutral</li>
+  <li>-10: Mild Depression</li>
+  <li>-20: Depression</li>
+</ol>
+
+  <div>
+    <canvas id="myChart"></canvas>
+  </div>
+
+
+<script>
+
+const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+];
+
+$.get( "https://jsonblob.com/api/jsonBlob/267f36d6-bd95-11eb-a392-416171a05f3d", function( api_data ) {
+
+  let dates = [];
+  let sis_data = [];
+  let mood_data = [];
+  let sleep_data = [];
+
+  for(let item of api_data) {
+    if(!isNaN(item.sleep)) {
+      const date = new Date(item.date);
+      dates.push(`${monthNames[date.getMonth()]}${date.getDate()}`);
+      sis_data.push(item.score);
+      mood_data.push(item.mood * 10);
+      sleep_data.push(item.sleep);
+    }
+  }
+
+const data = {
+  labels: dates,
+  datasets: [{
+    label: 'Sheehan Irritability Scale (SIS)',
+    backgroundColor: 'rgb(255, 99, 132)',
+    borderColor: 'rgb(255, 99, 132)',
+    data: sis_data,
+  },
+  {
+    label: 'Mood',
+    backgroundColor: 'rgb(99, 255, 132)',
+    borderColor: 'rgb(99, 255, 132)',
+    data: mood_data,
+  },
+  {
+    label: 'Sleep',
+    backgroundColor: 'rgb(99, 132, 255)',
+    borderColor: 'rgb(99, 132, 255)',
+    data: sleep_data,
+  }]
+};
+
+  const config = {
+    type: 'line',
+    data,
+    options: {}
+  };
+
+  var myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+
+});
+
+
+</script>
+
+</body>
+</html>
