@@ -51,6 +51,7 @@ $.get( "https://jsonblob.com/api/jsonBlob/267f36d6-bd95-11eb-a392-416171a05f3d",
 
   let dates = [];
   let sis_data = [];
+  let sis_30_day = [];
   let mood_data = [];
   let sleep_data = [];
 
@@ -61,6 +62,13 @@ $.get( "https://jsonblob.com/api/jsonBlob/267f36d6-bd95-11eb-a392-416171a05f3d",
       sis_data.push(item.score);
       mood_data.push(item.mood * 10);
       sleep_data.push(item.sleep);
+
+      if(sis_data.length < 30) sis_30_day.push(0);
+      else {
+        const last_30 = sis_30_day.slice(sis_30_day.length - 30, sis_30_day.length);
+        const sum = last_30.reduce((a, b) => a + b);
+        sis_30_day.push(sum / 30);
+      }
     }
   }
 
@@ -71,6 +79,12 @@ const data = {
     backgroundColor: 'rgb(255, 99, 132)',
     borderColor: 'rgb(255, 99, 132)',
     data: sis_data,
+  },
+  {
+    label: 'SIS 30-Dday Avg',
+    backgroundColor: 'rgb(132, 132, 132)',
+    borderColor: 'rgb(132, 132, 132)',
+    data: sis_30_day,
   },
   {
     label: 'Mood',
