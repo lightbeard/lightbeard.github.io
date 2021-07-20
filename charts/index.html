@@ -65,7 +65,7 @@ $.get( "https://jsonblob.com/api/jsonBlob/267f36d6-bd95-11eb-a392-416171a05f3d",
 
       if(sis_data.length < 30) sis_30_day.push(0);
       else {
-        const last_30 = sis_30_day.slice(sis_30_day.length - 30, 30);
+        const last_30 = sis_data.slice(sis_data.length - 30, sis_data.length);
         const sum = last_30.reduce((a, b) => a + b);
         sis_30_day.push(sum / 30);
       }
