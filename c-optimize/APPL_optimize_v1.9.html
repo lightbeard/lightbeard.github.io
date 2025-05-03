@@ -1,1 +1,419 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment-with-locales.min.js" integrity="sha512-4F1cxYdMiAW98oomSLaygEwmCnIP38pb4Kx70yQYqRwLVCs3DbRumfBq82T08g/4LJ/smbFGFpmeFlQgoDccgg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+  <script src="AAPL_2015_adj.js"></script>
+  <script src="sim_util.js"></script>
+
+    <script>
+
+const YEARS = -1;
+const INIT_BALANCE = 41499.20;
+const TRADE_DAYS = YEARS < 0 ? AAPL.length : Math.floor(250 * YEARS);
+const MAX_BUYING_FACTOR = 2;
+const MARGIN_APR = 0.0593; // increased from 0.0583 just to be conservative, also compounding in trade days
+const MARGIN_DPR = MARGIN_APR / 250;
+
+let EXEC;
+let EI;
+let row;
+
+function b(m, h, p) {
+    
+    const b = m.a1*p + m.b1*h + m.c1;
+
+    return b;
+}
+
+function s(m) {
+    return m.d2;
+}
+
+function update_balance_fees() {
+
+    if(typeof EXEC[EI].balance !== "number" || typeof EXEC[EI].gain !== "number" || !EXEC[EI].result || !EXEC[EI].buy_success) {
+        throw new Error("EXEC arg missing");
+    }
+
+    const TF = 0.000499028440;
+
+    if (EXEC[EI].result == "MOD") {
+
+        EXEC[EI].fees = 0;
+
+    } else {
+
+        if (["SALE", "BSALE"].includes(EXEC[EI].result)) {
+
+            EXEC[EI].fees = EXEC[EI].sale_price * EXEC[EI].shares * TF;
+
+        } else if (["REC", "BREC"].includes(EXEC[EI].result)) {
+
+            EXEC[EI].fees = EXEC[EI].rec_price * EXEC[EI].shares * TF;
+
+        } else if (["WAIT", "RWAIT"].includes(EXEC[EI].result)) {
+        
+            EXEC[EI].fees = 0;
+        
+        } else throw new Error(`Invalid Execution Result State EXEC[${EI}].buy_success:${EXEC[EI].buy_success} EXEC[${EI}].result:${EXEC[EI].result}`);
+
+        if (["Y", "B"].includes(EXEC[EI].buy_success)) {
+
+            EXEC[EI].fees = EXEC[EI].buy_price * EXEC[EI].shares * TF;
+
+        }
+    }      
+
+    if(["MOD", "BREC", "BSALE"].includes(EXEC[EI].result)) EXEC[EI].interest = 0.00;
+    else {
+        EXEC[EI].interest = 0.5 * EXEC[EI].buy_price * EXEC[EI].shares * MARGIN_DPR;
+        EXEC[EI].held++;
+    }
+
+    EXEC.push({
+        "balance": EXEC[EI].balance + EXEC[EI].gain - EXEC[EI].fees - EXEC[EI].interest
+    });
+}
+
+function log_trade(ei, normalized_return_sum) {
+
+    let cum_interest = 0.00;
+    let i = ei;
+
+    while( ! ["Y","B"].includes(EXEC[i].buy_success) ) {
+        cum_interest += EXEC[i].interest;
+        i--;
+    }
+
+    if(EXEC[i].buy_success == "B") cum_interest += EXEC[i].interest;
+    
+    console.log(`[${EXEC[ei].result}] buy_date=${EXEC[ei].buy_date} sell_date=${EXEC[ei].sell_date} buy_price=${EXEC[ei].buy_price.toFixed(2)} shares=${EXEC[ei].shares} sale_price=${EXEC[ei].sale_price?.toFixed(2) ?? 'N/A'} rec_price=${EXEC[ei].rec_price?.toFixed(2) ?? 'N/A'} held=${EXEC[ei].held} gain=${EXEC[ei].gain.toFixed(2)} interest=${cum_interest.toFixed(2)} nrs=${normalized_return_sum.toFixed(4)} balance=${EXEC[ei + 1].balance.toFixed(2)}`);
+    
+}
+
+function simulate_buy(m) {
+
+    if (row < 0)
+        return;
+
+    let mod_cnt = 0;
+    let bm_fill = false
+      , mkt_fill = false;
+    // outside because needed in while loop condition
+
+    do {
+
+        EXEC[EI].low_date = date(row + 1);
+
+        EXEC[EI].prev_mkt_low = mkt_low(row + 1);
+
+        EXEC[EI].buy_date = date(row);
+
+        const h = days_since_low();
+        const p = 1 - (mkt_high(row + 1) - close(row + 1)) / (mkt_high(row + 1) - EXEC[EI].prev_mkt_low);
+
+        EXEC[EI].buy_price = b(m, h, p) * EXEC[EI].prev_mkt_low;
+        
+        if (EI == 0) {
+            bm_fill = bm_low(row) < EXEC[EI].buy_price;
+        } else if (EXEC[EI - 1].result !== "BSALE" && EXEC[EI - 1].result !== "BREC") {
+            bm_fill = bm_low(row) < EXEC[EI].buy_price;
+        } else {
+            bm_fill = false;
+        }
+
+        // set here, but initialized outside loop
+        mkt_fill = mkt_low(row) < EXEC[EI].buy_price;
+
+        if(bm_fill) {
+
+            EXEC[EI].buy_price = Math.min(close(row + 1), EXEC[EI].buy_price);
+
+            EXEC[EI].shares = Math.floor(MAX_BUYING_FACTOR * EXEC[EI].balance / EXEC[EI].buy_price);
+
+            EXEC[EI].buy_success = 'B';
+
+        } else if(mkt_fill) {
+
+            EXEC[EI].buy_price = Math.min(open(row), EXEC[EI].buy_price);
+
+            EXEC[EI].shares = Math.floor(MAX_BUYING_FACTOR * EXEC[EI].balance / EXEC[EI].buy_price);
+
+            EXEC[EI].buy_success = 'Y';
+
+            row--;
+
+        } else {
+
+            EXEC[EI].buy_success = 'N';
+            EXEC[EI].sell_date = "N/A";
+            EXEC[EI].result = "MOD";
+            EXEC[EI].gain = 0.00;
+            EXEC[EI].interest = 0.00;
+            EXEC[EI].sale_price = "-";
+            EXEC[EI].stop_price = "-";
+            EXEC[EI].rec_price = "-";
+
+            update_balance_fees();
+            EI++;
+
+            mod_cnt++;
+            row--;
+        }
+
+    } while (!bm_fill && !mkt_fill && row >= 0);
+
+    return mod_cnt;
+}
+
+function simulate_sell(m) {
+
+    EXEC[EI].held = 0;
+
+    if (row < 0 || row == 0 && EXEC[EI].result == "MOD")
+        return;
+
+    if(!EXEC[EI].buy_success || typeof EXEC[EI].buy_price !== "number" || typeof EXEC[EI].shares !== "number" ) {
+        throw new Error("EXEC arg missing");
+    }
+
+    let wait_cnt = 0;
+
+    do {
+
+        EXEC[EI].sell_date = date(row);
+
+        const prev_high = mkt_high(row + 1);
+
+        EXEC[EI].sale_price = s(m) * EXEC[EI].buy_price;
+
+        EXEC[EI].stop_price = m.sl * EXEC[EI].buy_price;
+        EXEC[EI].rec_price = m.r * EXEC[EI].buy_price;
+
+        const no_bm_buy_today = EXEC[EI].buy_success !== "B";
+        const rec_pending = EI > 0 && EXEC[EI - 1].result == "RWAIT";
+
+        const bm_sale = no_bm_buy_today && !rec_pending && bm_high(row) > EXEC[EI].sale_price;
+        const mkt_sale = !rec_pending && mkt_high(row) > EXEC[EI].sale_price;
+
+        const bm_stop =  no_bm_buy_today && !rec_pending && bm_low(row) <= EXEC[EI].stop_price;
+        const mkt_stop = mkt_low(row) <= EXEC[EI].stop_price;
+
+        const bm_rec = rec_pending && bm_high(row) > EXEC[EI].rec_price; // in recovery and recovered before market
+
+        const mkt_rec = rec_pending && !bm_rec && mkt_high(row) > EXEC[EI].rec_price || // in recovery and recovered in market
+        !rec_pending && bm_stop && mkt_high(row) > EXEC[EI].rec_price; // stopped before market and recovered in market
+
+        const is_rwait = bm_stop && (!bm_rec && !mkt_rec) || mkt_stop && !mkt_rec || // we stopped sometime today and missed recovery
+        rec_pending && (!bm_rec && !mkt_rec); // in RWAIT already and we did not recover today
+
+        const is_wait = !bm_sale && !mkt_sale && !bm_rec && !mkt_rec;
+
+        if (bm_sale) {
+
+            EXEC[EI].sale_price = Math.max(close(row + 1), EXEC[EI].sale_price);
+
+            EXEC[EI].result = "BSALE";
+            EXEC[EI].gain = EXEC[EI].shares * (EXEC[EI].sale_price - EXEC[EI].buy_price);
+
+        } else if (bm_rec) {
+            
+            EXEC[EI].result = "BREC";
+
+            EXEC[EI].rec_price = Math.max(close(row + 1), EXEC[EI].rec_price);
+
+            const rec_gain = EXEC[EI].rec_price * EXEC[EI].shares - EXEC[EI].buy_price * EXEC[EI].shares;
+
+            if (typeof EXEC[EI].gain == "undefined") {
+                EXEC[EI].gain = rec_gain;
+            } else {
+                EXEC[EI].gain += rec_gain;
+            }
+
+        } else if (mkt_sale) {
+
+            EXEC[EI].sale_price = Math.max(open(row), EXEC[EI].sale_price);
+
+            EXEC[EI].result = "SALE";
+
+            if (typeof EXEC[EI].gain == "undefined") EXEC[EI].gain = 0.00;
+
+            EXEC[EI].gain += EXEC[EI].shares * (EXEC[EI].sale_price - EXEC[EI].buy_price);
+
+        } else if (mkt_rec) {
+
+            EXEC[EI].rec_price = Math.max(open(row), EXEC[EI].rec_price);
+
+            EXEC[EI].result = "REC";
+
+            const rec_gain = EXEC[EI].rec_price * EXEC[EI].shares - EXEC[EI].buy_price * EXEC[EI].shares;
+
+            if (typeof EXEC[EI].gain == "undefined") {
+                EXEC[EI].gain = rec_gain;
+            } else {
+                EXEC[EI].gain += rec_gain;
+            }
+
+        } else if (is_wait) {
+
+            // note that is_wait is not the inverse of is_rwait
+            // is_wait returns true for both wait conditions		
+            EXEC[EI].result = is_rwait ? "RWAIT" : "WAIT";
+
+            if (typeof EXEC[EI].gain == "undefined") EXEC[EI].gain = 0.00;
+
+        } else {
+            throw Error("invalid EXEC[EI] result state");
+        }
+
+        if(["WAIT", "RWAIT", "REC", "SALE"].includes(EXEC[EI].result)) row--;
+
+        update_balance_fees();
+
+        // done here so creation of new EXEC rows stays in update balance
+        if (is_wait) {
+
+            // we are waiting, propogate relevant fields to next EXEC row
+            EXEC[EI + 1].buy_success = 'S';
+            EXEC[EI + 1].shares = EXEC[EI].shares;
+            EXEC[EI + 1].buy_date = EXEC[EI].buy_date;
+            EXEC[EI + 1].buy_price = EXEC[EI].buy_price;
+            EXEC[EI + 1].held = EXEC[EI].held;
+
+            wait_cnt++;
+        }
+
+        EI++;
+
+    } while (EXEC[EI].balance > 0 && (EXEC[EI - 1].result == "RWAIT" || EXEC[EI - 1].result == "WAIT") && row >= 0);
+
+    return wait_cnt;
+}
+
+function run_data(m) {
+
+    // Reset EXEC
+    EXEC = [{balance: INIT_BALANCE}];
+    EI = 0;
+
+    row = TRADE_DAYS - 2;
+
+    let total_profit = 0.00;
+    let sale_cnt = 0
+      , stop_cnt = 0
+      , buy_cnt = 0
+      , longest_buy_wait = 0
+      , longest_sell_wait = 0;
+    let total_buy_mod = 0
+      , total_sell_wait = 0;
+
+    while (row >= 0) {
+
+        let mod_cnt = simulate_buy(m);
+        if (row === -1) break;
+        buy_cnt++;
+
+        if (mod_cnt > longest_buy_wait) longest_buy_wait = mod_cnt;
+        total_buy_mod += mod_cnt;
+
+        let wait_cnt = simulate_sell(m);
+        if (row === -1) break;
+
+        if (wait_cnt > longest_sell_wait) longest_sell_wait = wait_cnt;
+        total_sell_wait += wait_cnt;
+
+        if (EXEC[EI - 1].result == "BSALE" || EXEC[EI - 1].result == "SALE")
+            sale_cnt++;
+        if (EXEC[EI - 1].result == "BREC" || EXEC[EI - 1].result == "REC")
+            stop_cnt++;
+    }
+
+    // measuring performance in v1.6 forward by normalizing each gain by the balance of the day
+    let normalized_return_sum = 0.00;
+
+    // last row of EXEC is empty so remove it
+    EXEC.pop();
+
+    EXEC.forEach((row, ei) => {
+       if (EXEC[ei + 1] && typeof EXEC[ei + 1].balance == "number") {
+
+            const normalize_return = ( EXEC[ei + 1].balance - row.balance ) / row.balance;
+
+            normalized_return_sum += normalize_return;
+
+            if (["BSALE", "BREC", "SALE", "REC"].includes(row.result)) { 
+                log_trade(ei, normalized_return_sum);
+            }
+       }
+    });
+
+    const daily_nreturn = normalized_return_sum / TRADE_DAYS;
+    const year_nreturn = 250 * daily_nreturn;
+
+    let results = {
+        "n_return": year_nreturn,
+        "buy_cnt": buy_cnt,
+        "buy_rate": buy_cnt / (buy_cnt + total_buy_mod),
+        "sale_rate": sale_cnt / (sale_cnt + stop_cnt + total_sell_wait),
+        "stop_rate": stop_cnt / (sale_cnt + stop_cnt + total_sell_wait),
+        "mod_rate": total_buy_mod / (buy_cnt + total_buy_mod),
+        "wait_rate": total_sell_wait / (sale_cnt + stop_cnt + total_sell_wait),
+        "longest_buy_wait": longest_buy_wait,
+        "longest_sell_wait": longest_sell_wait
+        //"EXEC": EXEC
+    };
+
+    return results;
+}
+
+        function main() {
+               
+            console.log(`AAPL optimal limits v1.9.html - YEARS=${YEARS} INIT_BALANCE=${INIT_BALANCE.toFixed(2)}`);
+
+            results = run_data({
+
+                a1:-0.04360000, b1:0.00000200, c1:1.00400000, d1:0.00000000, a2:0.00000000, b2:0.00000000, c2:0.00000000, d2:1.02499998, sl:0.985000, r:1.000000
+
+            });
+
+            console.log(results);
+
+            for (const key in results) {
+                if (key == "annual_return")
+                    results[key] = results[key].toFixed(4);
+                else if (key !== "daily_return" && key !== 'b' && key !== 'o' && key !== 's' && key !== 'sl' && key !== 'r' && typeof results[key] === "number")
+                    results[key] = results[key].toFixed(2);
+            }
+
+            document.write("RESULTS: " + JSON.stringify(results));
+
+            /*
+	 * generate table mode for comparison to practice
+	 */
+
+            document.write('<br><br><table><tr><th>balance</th><th>low date</th><th>low</th><th>history</th><th>buy price</th><th>buy date</th><th>success</th><th>shares</th><th>sale price</th><th>stop price</th><th>rec price</th><th>sell date</th><th>result</th><th>gain</th><th>interest</th><th>fee factor</th><th>fees</th></tr>');
+
+            EXEC.forEach(function(row) {
+                if (!row.balance)
+                    return;
+
+                for (const key in row) {
+                    if (typeof row[key] === "number") {
+                        
+                        if(key == "shares" || key == "correction") row[key] = row[key].toFixed(0);
+                        else row[key] = row[key].toFixed(2);
+
+                    } else if (typeof row[key] === "undefined")
+                        row[key] = "";
+                }
+
+                document.write(`<tr><td>${row.balance}</td><td>${row.low_date}</td><td>${row.prev_mkt_low}</td><td>${row.history}</td><td>${row.buy_price}</td><td>${row.buy_date}</td><td>${row.buy_success}</td><td>${row.shares}</td><td>${row.sale_price}</td><td>${row.stop_price}</td><td>${row.rec_price}</td><td>${row.sell_date}</td><td>${row.result}</td><td>${row.gain}</td><td>${row.interest}</td><td>${row.fee_factor}</td><td>${row.fees}</td></tr>`);
+            });
+
+            document.write("</table>");
+
+        } // end main
+
+        main();
+    </script>
+</html>
 
